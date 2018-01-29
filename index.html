@@ -1,0 +1,91 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<title>BLOG VERSION 1 </title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="header">
+  <h2>THIS IS A BLOG</h2>
+</div>
+
+<ul>
+  <li><a href="#home">Home</a></li>
+  <li><a href="#news">News</a></li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">catagories</a>
+    <div class="dropdown-content">
+      <a href="#">news/updates</a> 
+      <a href="#">programming</a>
+      <a href="#">lifestyle</a>
+       <a href="#">animals</a>
+    </div>
+  </li>
+  <li style="float:right"><a id="newpostlink" href="#newpost">New post</a></li>
+</ul>
+
+  
+<div id="postblog">
+    <form id="submit_chat" onsubmit="submitblog(); return false;">
+      <input id="title_input" type="text" placeholder="title" name="title_input" ><br />
+      <input id="description_input" type="text" placeholder="description" name="descr_input" ><br />
+      
+      <select name="catagories" size="4" multiple>
+       <option value="news">News</option>
+        <option value="programming">Programming</option>
+        <option value="lifestyle">Lifestyle</option>
+        <option value="animals">Animals</option>
+      </select><br />
+      <textarea id="text_input" name="text_input" rows="10" cols="30"></textarea><br />
+      <input id="blog_submit" type="submit" value="ENTER" onclick= "submitblog(); return false;">
+    </form>
+ </div>
+
+
+
+<div class="row">
+
+  <div class="leftcolumn">
+    <div class="card_blog">
+      <div class="card_title"><h2>title post</h2></div>
+      <h5>short description+catagory+date</h5>      
+      <div class="card_content">
+      <p>blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.</p>
+      </div>
+    </div>
+
+    <div class="card_blog">
+      <div class="card_title"><h2>title post</h2></div>
+      <h5>short description+catagory+date</h5>
+      <div class="card_content">
+      <p>blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="rightcolumn">
+    <div id="card_aboutme">
+      <h2>About Me</h2>
+      <div class="fakeimg" style="height:100px;">me.jpg</div>
+      <p>I am a blog..</p>
+    </div>
+    <div id="card_catagories">
+      <h3>catagories</h3>
+      <div class="sidebar_catagory"><p>News/updates</p></div>
+      <div class="sidebar_catagory"><p>Programming</p></div>
+      <div class="sidebar_catagory"><p>Lifestyle</p></div>
+      <div class="sidebar_catagory"><p>Animals</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <h2>Footer</h2>
+  <p> contact and stuff</p>
+</div>
+
+<script src="sript.js"></script>
+</body>
+</html>

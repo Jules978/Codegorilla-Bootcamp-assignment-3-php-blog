@@ -12,12 +12,37 @@ body {
 
     
 }
-#postblog{
 
-    display: none;
+/* submit.hmtl specific*/
+#postblog{
+    text-align:left;
+    display: block;
     margin: auto;
-    width: 75%;
+    margin-top: 10px;
+    width: 90%;
     padding: 5px;
+    background-color: #FBFBFB;
+
+}
+
+#title_input{ 
+    margin: auto;
+    width: 50%;
+}
+
+#description_input{
+    margin: auto;
+    width:50%;
+}
+
+#catagories_input{
+    margin: auto;
+   
+}
+
+#text_input{
+    margin: auto;
+    width:80%;
 }
 /* Header/Blog Title */
 #header {

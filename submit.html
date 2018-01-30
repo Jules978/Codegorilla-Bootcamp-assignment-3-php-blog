@@ -1,0 +1,56 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<title>BLOG VERSION 1 </title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="header">
+  <h2>THIS IS A BLOG</h2>
+</div>
+
+<ul>
+  <li><a href="index.html">Home</a></li>
+  <li><a href="#news">News</a></li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">catagories</a>
+    <div class="dropdown-content">
+      <a href="#">news/updates</a> 
+      <a href="#">programming</a>
+      <a href="#">lifestyle</a>
+       <a href="#">animals</a>
+    </div>
+  </li>
+  <li style="float:right"><a id="newpostlink" href="submit.html">New post</a></li>
+</ul>
+
+  
+<div id="postblog">
+    <form id="submit_chat" onsubmit="submitblog(); return false;">
+     Title:<br />     
+      <input id="title_input" type="text" placeholder="title" name="title_input" ><br />
+      Catagories: <br/>
+      <select id="catagories_input" = name="catagories_input" size="4"> 
+          <option value="news">News</option>
+          <option value="programming">Programming</option>
+          <option value="lifestyle">Lifestyle</option>
+          <option value="animals">Animals</option>
+        </select><br />
+      Blogtext: <br/>
+      <textarea id="text_input" name="text_input" rows="10" cols="30"></textarea><br />
+      <input id="blog_submit" type="submit" value="ENTER" onclick= "submitblog(); return false;">
+    </form>
+ </div>
+
+
+
+<div class="footer">
+  <h2>Footer</h2>
+  <p> contact and stuff</p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

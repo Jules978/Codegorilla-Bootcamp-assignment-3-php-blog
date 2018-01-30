@@ -5,12 +5,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
+     
+<body onload="getposts();">
+     <!-- <body onload="getblogposts();"> -->
 
 <div id="header">
   <h2>THIS IS A BLOG</h2>
 </div>
-
+<!-- nav bar + drop down menu-->
 <ul>
   <li><a href="#home">Home</a></li>
   <li><a href="#news">News</a></li>
@@ -23,46 +25,14 @@
        <a href="#">animals</a>
     </div>
   </li>
-  <li style="float:right"><a id="newpostlink" href="#newpost">New post</a></li>
+  <li style="float:right"><a id="newpostlink" href="submit.html">New post</a></li>
 </ul>
 
-  
-<div id="postblog">
-    <form id="submit_chat" onsubmit="submitblog(); return false;">
-      <input id="title_input" type="text" placeholder="title" name="title_input" ><br />
-      <input id="description_input" type="text" placeholder="description" name="descr_input" ><br />
-      
-      <select name="catagories" size="4" multiple>
-       <option value="news">News</option>
-        <option value="programming">Programming</option>
-        <option value="lifestyle">Lifestyle</option>
-        <option value="animals">Animals</option>
-      </select><br />
-      <textarea id="text_input" name="text_input" rows="10" cols="30"></textarea><br />
-      <input id="blog_submit" type="submit" value="ENTER" onclick= "submitblog(); return false;">
-    </form>
- </div>
 
+ <div class="row">
 
-
-<div class="row">
-
-  <div class="leftcolumn">
-    <div class="card_blog">
-      <div class="card_title"><h2>title post</h2></div>
-      <h5>short description+catagory+date</h5>      
-      <div class="card_content">
-      <p>blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.</p>
-      </div>
-    </div>
-
-    <div class="card_blog">
-      <div class="card_title"><h2>title post</h2></div>
-      <h5>short description+catagory+date</h5>
-      <div class="card_content">
-      <p>blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.blog text.</p>
-      </div>
-    </div>
+  <div id = "blog_row" class="leftcolumn">
+   
   </div>
 
   <div class="rightcolumn">
@@ -86,6 +56,6 @@
   <p> contact and stuff</p>
 </div>
 
-<script src="sript.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
      
-<body onload="getposts();">
+<body onload="getfiveposts();">
      <!-- <body onload="getblogposts();"> -->
 
 <div id="header">
@@ -14,15 +14,15 @@
 </div>
 <!-- nav bar + drop down menu-->
 <ul>
-  <li><a href="#home" onclick="getposts();">Home</a></li>
-  <li><a href="#news">News</a></li>
+  <li><a href="#home" onclick="getfiveposts();">Home</a></li>
+  <li><a href="#news" onclick="getallposts();">All posts</a></li>
   <li class="dropdown">
     <a href="javascript:void(0)" class="dropbtn">catagories</a>
     <div class="dropdown-content">
-      <a href="#">news/updates</a> 
-      <a href="#">programming</a>
-      <a href="#">lifestyle</a>
-       <a href="#">animals</a>
+      <a href="#" onclick="sortbycatagory('news')">news/updates</a> 
+      <a href="#" onclick="sortbycatagory('programming')">programming</a>
+      <a href="#" onclick="sortbycatagory('lifestyle')">lifestyle</a>
+       <a href="#" onclick="sortbycatagory('animals')">animals</a>
     </div>
   </li>
   <li style="float:right"><a id="newpostlink" href="submit.html">New post</a></li>

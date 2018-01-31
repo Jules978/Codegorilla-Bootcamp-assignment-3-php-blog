@@ -1,7 +1,9 @@
 # blog
 A blog+database, for the third CodeGorilla assignment. Live version: http://wijzijncodegorilla.nl/julia/blog/
 
-# Version 1.5 (29.01.2018)
+# Version 2 (31.01.2018)
+version 2: added text editor to submit form, and edited javascript code to work with html tags (innerhtml instead of textnode creation).
+
 version 1.5: added sort by catagory function, cleaned up javascript and php code. Homepage shows latest 5 posts. 
 
 version 1: Blog site with submit page, blogs are stored in the database, and shown on the homepage (most recent posts first).
@@ -24,8 +26,7 @@ A website where blogposts can be added to a database, and shown on the homepage.
 
 # to do:
 
- - simple text editor on submit page
  - custom catagories
-  multiple catagories per blogpost
+ - multiple catagories per blogpost
  - add images to database
 

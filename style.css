@@ -24,6 +24,18 @@ body {
     background-color: #FBFBFB;
 
 }
+#postmessage{
+    text-align:center;
+    font-size: 30px;
+    display: none;
+    margin: auto;
+    margin-top: 10px;
+    width: 90%;
+    
+    padding: 5px;
+    background-color: #FBFBFB;
+
+}
 
 #title_input{ 
     margin: auto;

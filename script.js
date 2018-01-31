@@ -4,15 +4,19 @@ var xhr = new XMLHttpRequest();
 
 // send blogpost data to database:
 
+
 function submitblog(){  //submits new blog post to submit.php
 	var blog_title =  document.getElementById('title_input').value;  
 	var blog_catagory = document.getElementById('catagories_input').value;
-	var blog_text = document.getElementById('text_input').value;
+	 var blog_text = CKEDITOR.instances.editor1.getData();
+	console.log(blog_text);
 	
-	var url= "blogtitle="+ blog_title +"&blogcatagory=" + blog_catagory+ "&blogtext=" + blog_text;  
+	 var url= "blogtitle="+ blog_title +"&blogcatagory=" + blog_catagory+ "&blogtext=" + blog_text;  
 	xhr.open("POST","submit.php", true); //POST request
 	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
-  	xhr.send(url);
+  	xhr.send(url); 
+  	document.getElementById("postblog").style.display = "none";
+  	document.getElementById("postmessage").style.display = "block"; 
 
 };
 
@@ -32,7 +36,7 @@ function getallposts(){
 	for (var post in blogs_array) { //creates blog cards for every item in the list
        if (blogs_array.hasOwnProperty(post)) {
         //create elements for full post, title, and content.
-        var blogcard = document.createElement("div"); //creates main blog card
+        var blogcard = document.createElement("div"); 
           	blogcard.id = blogs_array[post].ID;
 			blogcard.className = 'card_blog';
 
@@ -46,15 +50,15 @@ function getallposts(){
         	blogcard_content.className = 'card_content';
 
 		//creates textnode with title, catagory, and text
-    	var blog_text = document.createTextNode(blogs_array[post].text); 
+    	var blog_text = blogs_array[post].text; 
    		var blog_title = document.createTextNode(blogs_array[post].title);
    		var blog_catagory = document.createTextNode(blogs_array[post].catagory);
-
+   		
    		//adds textnodes to corresponding elements
    		blogcard_title_content.appendChild(blog_title);
    		blogcard_title.appendChild(blogcard_title_content);
    		blogcard_catagory_content.appendChild(blog_catagory);
-		blogcard_content.appendChild(blog_text);
+		blogcard_content.innerHTML = blog_text;
 		    
 		//add elements to main blog div
 		blogcard.appendChild(blogcard_title);
@@ -95,7 +99,7 @@ function getfiveposts(){
         	blogcard_content.className = 'card_content';
 
 		//creates textnode with title, catagory, and text
-    	var blog_text = document.createTextNode(blogs_array[post].text); 
+    	var blog_text = blogs_array[post].text; 
    		var blog_title = document.createTextNode(blogs_array[post].title);
    		var blog_catagory = document.createTextNode(blogs_array[post].catagory);
    		
@@ -103,7 +107,7 @@ function getfiveposts(){
    		blogcard_title_content.appendChild(blog_title);
    		blogcard_title.appendChild(blogcard_title_content);
    		blogcard_catagory_content.appendChild(blog_catagory);
-		blogcard_content.appendChild(blog_text);
+		blogcard_content.innerHTML = blog_text;
 		    
 		//add elements to main blog div
 		blogcard.appendChild(blogcard_title);
@@ -129,7 +133,7 @@ function sortbycatagory(catagory){
        if (blogs_array.hasOwnProperty(post)) {
         
 		//create elements for full post, title, and content.
-        var blogcard = document.createElement("div"); //creates main blog card
+        var blogcard = document.createElement("div"); 
           	blogcard.id = blogs_array[post].ID;
 			blogcard.className = 'card_blog';
 
@@ -143,7 +147,7 @@ function sortbycatagory(catagory){
         	blogcard_content.className = 'card_content';
 
 		//creates textnode with title, catagory, and text
-    	var blog_text = document.createTextNode(blogs_array[post].text); 
+    	var blog_text = blogs_array[post].text; 
    		var blog_title = document.createTextNode(blogs_array[post].title);
    		var blog_catagory = document.createTextNode(blogs_array[post].catagory);
    		
@@ -151,7 +155,7 @@ function sortbycatagory(catagory){
    		blogcard_title_content.appendChild(blog_title);
    		blogcard_title.appendChild(blogcard_title_content);
    		blogcard_catagory_content.appendChild(blog_catagory);
-		blogcard_content.appendChild(blog_text);
+		blogcard_content.innerHTML = blog_text;
 		    
 		//add elements to main blog div
 		blogcard.appendChild(blogcard_title);

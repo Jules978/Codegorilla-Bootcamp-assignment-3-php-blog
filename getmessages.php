@@ -2,17 +2,18 @@
 	
 if ($_SERVER['REQUEST_METHOD'] == 'GET') { //does stuff if the request method is get
 	if(isset($_GET["action"]) && $_GET['action'] == "read") {
-		$dsn = 'mysql:dbname=blogdb;host=127.0.0.1';
+		$dsn = 'mysql:dbname=blog;host=127.0.0.1';
 		$user_name = 'root';
 		$pass_word = '';
-		$db='blogdb';
+		$db='blog';
 
 		$connection = new PDO($dsn, $user_name, $pass_word);
 		$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 		try {		
-			$sql = 'SELECT * FROM blogposts ORDER BY ID DESC';  //WHERE id ="'.$postid.'"
+			$sql = 'SELECT * FROM articles INNER JOIN categories ON articles.category_id=categories.id ORDER BY articles.id DESC' ;  //WHERE id ="'.$postid.'"
 			
+		
 			$statement = $connection->query($sql); 
 			$result = $statement->fetchall(\PDO::FETCH_ASSOC);
 			$blogJSON = json_encode($result);
@@ -33,17 +34,51 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') { //does stuff if the request method is
 
 
 	}elseif(isset($_GET["action"]) && $_GET['action'] == "sort") {
-		$dsn = 'mysql:dbname=blogdb;host=127.0.0.1';
+		$dsn = 'mysql:dbname=blog;host=127.0.0.1';
 		$user_name = 'root';
 		$pass_word = '';
-		$db='blogdb';
-		$catagory =  $_GET['catagory']; 
+		$db='blog';
+		$category =  $_GET['category']; 
 		
 		$connection = new PDO($dsn, $user_name, $pass_word);
 		$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 		try {		
-			$sql = 'SELECT * FROM blogposts WHERE catagory ="'.$catagory.'" ORDER BY ID DESC ';  //WHERE id ="'.$postid.'"
+			$sql = 'SELECT * FROM articles INNER JOIN categories ON articles.category_id=categories.id WHERE category_id ="'.$category.'" ORDER BY articles.id DESC';  //WHERE id ="'.$postid.'"
+			
+
+
+
+
+			$statement = $connection->query($sql); 
+			$result = $statement->fetchall(\PDO::FETCH_ASSOC);
+			$blogJSON = json_encode($result);
+
+			echo $blogJSON;
+			
+			}
+
+		catch(PDOException $e) {
+			echo $sql . "<br>" . $e->getMessage();
+		}
+
+		$connection = null; // Close connection
+
+		if(isset($_SERVER['HTTP_REFERER'])) {
+		    $previous = $_SERVER['HTTP_REFERER'];
+		}
+	}elseif(isset($_GET["action"]) && $_GET['action'] == "cat") {
+		$dsn = 'mysql:dbname=blog;host=127.0.0.1';
+		$user_name = 'root';
+		$pass_word = '';
+		$db='blogdb';
+		
+		
+		$connection = new PDO($dsn, $user_name, $pass_word);
+		$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+		try {		
+			$sql = 'SELECT * FROM categories';  //WHERE id ="'.$postid.'"
 			
 			$statement = $connection->query($sql); 
 			$result = $statement->fetchall(\PDO::FETCH_ASSOC);

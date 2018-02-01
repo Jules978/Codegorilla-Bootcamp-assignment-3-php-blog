@@ -4,9 +4,10 @@
 <title>BLOG VERSION 1 </title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
      
-<body onload="getfiveposts();">
+<body onload="getfiveposts(); loadcategories()">
      <!-- <body onload="getblogposts();"> -->
 
 <div id="header">
@@ -17,12 +18,9 @@
   <li><a href="#home" onclick="getfiveposts();">Home</a></li>
   <li><a href="#news" onclick="getallposts();">All posts</a></li>
   <li class="dropdown">
-    <a href="javascript:void(0)" class="dropbtn">catagories</a>
-    <div class="dropdown-content">
-      <a href="#" onclick="sortbycatagory('news')">news/updates</a> 
-      <a href="#" onclick="sortbycatagory('programming')">programming</a>
-      <a href="#" onclick="sortbycatagory('lifestyle')">lifestyle</a>
-       <a href="#" onclick="sortbycatagory('animals')">animals</a>
+    <a href="javascript:void(0)" class="dropbtn">categories</a>
+    <div id = "dropdown_category" class="dropdown-content">
+      
     </div>
   </li>
   <li style="float:right"><a id="newpostlink" href="submit.html">New post</a></li>
@@ -35,18 +33,15 @@
    
   </div>
 
-  <div class="rightcolumn">
+  <div class="rightcolumn"> 
     <div id="card_aboutme">
-      <h2>About Me</h2>
+      <h2 onclick="test()">About Me</h2>
       <div class="fakeimg" style="height:100px;">me.jpg</div>
       <p>I am a blog..</p>
     </div>
-    <div id="card_catagories">
-      <h3>catagories</h3>
-      <div class="sidebar_catagory" onclick="sortbycatagory('news')"><p>News</p></div>
-      <div class="sidebar_catagory" onclick="sortbycatagory('programming')"><p>Programming</p></div>
-      <div class="sidebar_catagory" onclick="sortbycatagory('lifestyle')"><p>Lifestyle</p></div>
-      <div class="sidebar_catagory" onclick="sortbycatagory('animals')"><p>Animals</p></div>
+    <div id="card_categories">
+      <h3>categories</h3>
+     
     </div>
   </div>
 </div>

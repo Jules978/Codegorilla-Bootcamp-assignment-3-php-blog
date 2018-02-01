@@ -13,7 +13,35 @@ body {
     
 }
 
+
 /* submit.hmtl specific*/
+#new_category{
+    margin: auto;
+    text-align:center;
+    background-color: #FBFBFB;
+    margin-top: 10px;
+    width: 90%;
+    padding: 5px;
+    display: none;
+}
+
+#newcategory_input{
+    margin: auto;
+    height: 30px;
+    width: 30%;
+    margin-top: 5px;
+
+
+}
+#submit_newcategory{
+    margin: auto;
+    margin-top: 5px;
+    padding: 1px;
+    width: 30%;
+    
+    background-color: #F2A073;
+}
+
 #postblog{
     text-align:left;
     display: block;
@@ -24,12 +52,32 @@ body {
     background-color: #FBFBFB;
 
 }
+#title{
+
+
+}
+#title_input{ 
+    margin: auto;
+    margin-top: 1px;
+     margin-bottom: 10px;
+    width: 100%;
+    height: 5%;
+}
+
+#categories_input{
+    margin-top: 10px;
+     margin-bottom: 10px;
+    margin: auto;
+    width: 20%;
+   
+}
 #postmessage{
     text-align:center;
     font-size: 30px;
     display: none;
     margin: auto;
     margin-top: 10px;
+    padding: 5px;
     width: 90%;
     
     padding: 5px;
@@ -37,24 +85,17 @@ body {
 
 }
 
-#title_input{ 
-    margin: auto;
-    width: 50%;
-}
 
-#description_input{
-    margin: auto;
-    width:50%;
-}
 
-#catagories_input{
+#blog_submit{
+    margin-top: 10px;
+    background:none;
+    border: none;
+    background-color: #F2A073;
+    margin-top: 10px;
     margin: auto;
-   
-}
+    width: 30%;
 
-#text_input{
-    margin: auto;
-    width:80%;
 }
 /* Header/Blog Title */
 #header {
@@ -113,15 +154,18 @@ body {
     padding-top:20px;
 }
 
-/* Fake image */ 
 
-.sidebar_catagory {
+
+.sidebar_category {
     background-color: #F2A073;
     width: 100%;
     height: 10%;
     margin-top: 5px;
     padding: 2px;
 }
+
+
+
 /* Add a card effect for articles */
 .card_blog {
      background-color: #FBFBFB;
@@ -129,7 +173,7 @@ body {
      margin-bottom: 20px;
 }
 
-#card_catagories {
+#card_categories {
     
      
      margin-top: 20px;

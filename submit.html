@@ -5,8 +5,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
-<body>
+<body onload="loadsubmitcategories()">
 
 <div id="header">
   <h2>THIS IS A BLOG</h2>
@@ -14,36 +15,36 @@
 
 <ul>
   <li><a href="index.html">Home</a></li>
-  <li><a href="#news">News</a></li>
-  <li class="dropdown">
-    <a href="javascript:void(0)" class="dropbtn">catagories</a>
-    <div class="dropdown-content">
-      <a href="#">news</a> 
-      <a href="#">programming</a>
-      <a href="#">lifestyle</a>
-       <a href="#">animals</a>
-    </div>
+  <li><a href="#newcategory" onclick= "showsubmitnewcategory()" >Add category</a></li>
+
+  
   </li>
-  <li style="float:right"><a id="newpostlink" href="submit.html">New post</a></li>
+  <li style="float:right"><a id="newpostlink" href="submit.html">Add new post</a></li>
 </ul>
 
   
+<div id="new_category">
+  New Category:<br />     
+      <input id="newcategory_input" type="text" placeholder="category" name="newcategory_input" >
+      <div id="submit_newcategory" onclick= "submitcategory()">Send</div>
+
+
+</div>
+
 
 
  <div id="postmessage"> Your blog has been posted!  </div> 
+ 
 <div id="postblog">
     <form id="submit_chat" onsubmit="submitblog(); return false;">
      Title:<br />     
       <input id="title_input" type="text" placeholder="title" name="title_input" ><br />
-      Catagories: <br/>
-      <select id="catagories_input" = name="catagories_input" size="4"> 
-          <option value="news">News</option>
-          <option value="programming">Programming</option>
-          <option value="lifestyle">Lifestyle</option>
-          <option value="animals">Animals</option>
+      Category: <br/>
+      <select id="categories_input" = name="categories_input" size="4"> 
+          
         </select><br />
           <textarea name="editor1" id="editor1" rows="10" cols="80">         
-            </textarea>
+            </textarea> 
             <script>
                 // Replace the <textarea id="editor1"> with a CKEditor
                 // instance, using default configuration.
@@ -51,8 +52,9 @@
             </script>
       
       <input id="blog_submit" type="submit" value="ENTER" onclick= "submitblog(); return false;">
+     
     </form>
-   
+
  </div>
 
 

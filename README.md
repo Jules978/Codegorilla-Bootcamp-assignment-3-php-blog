@@ -1,7 +1,9 @@
 # blog
 A blog+database, for the third CodeGorilla assignment. Live version: http://wijzijncodegorilla.nl/julia/blog/
 
-# Version 2.5 (31.01.2018)
+# Version 3 (02.02.2018)
+
+version 3:  minor fixes, cleaned up a bit, added images and text to main page.
 
 version 2.5: added the option the add categories, fixed an issue with blogpost length. 
 
@@ -27,7 +29,7 @@ A website where blogposts can be added to a database, and shown on the homepage.
 - text formatting in blogpost
 - images in blogpost.
 
-# to do:
+## to do:
 
  - multiple catagories per blogpost
  - add images to database

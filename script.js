@@ -48,40 +48,47 @@ function getallposts(){
 	for (var post in blogs_array) { //creates blog cards for every item in the list
        if (blogs_array.hasOwnProperty(post)) {
         //create elements for full post, title, and content.
+       var blog_date = blogs_array[post].date;
+        var blog_category_text = blogs_array[post].name;
+        var blog_date_category= blogs_array[post].date+ ", in " + blog_category_text;
+    //create elements for full post, title, and content.
         var blogcard = document.createElement("div"); 
-          	blogcard.id = blogs_array[post].ID;
-			blogcard.className = 'card_blog';
+            blogcard.id = blogs_array[post].ID;
+      blogcard.className = 'card_blog';
 
         var blogcard_title = document.createElement("div") 
-        	blogcard_title.className = 'card_title';
-        var blogcard_title_content = document.createElement("H2")
-
-        var blogcard_category_content = document.createElement("H5") 
+          blogcard_title.className = 'card_title';
+        var blogcard_title_content = document.createElement("div")
+            blogcard_title_content.className= "blog_title_line";
+        var blogcard_category_content = document.createElement("div") 
+            blogcard_category_content.className= "blog_category_line";
 
         var blogcard_content = document.createElement("div") 
-        	blogcard_content.className = 'card_content';
+          blogcard_content.className = 'card_content';
 
-		//creates textnode with title, category, and text
-    	var blog_text = blogs_array[post].text; 
-   		var blog_title = document.createTextNode(blogs_array[post].title);
-   		var blog_category = document.createTextNode(blogs_array[post].name);
-   		
-   		//adds textnodes to corresponding elements
-   		blogcard_title_content.appendChild(blog_title);
-   		blogcard_title.appendChild(blogcard_title_content);
-   		blogcard_category_content.appendChild(blog_category);
-		blogcard_content.innerHTML = blog_text;
-		    
-		//add elements to main blog div
-		blogcard.appendChild(blogcard_title);
-		blogcard.appendChild(blogcard_category_content);
-		blogcard.appendChild(blogcard_content);
-		document.getElementById("blog_row").appendChild(blogcard);
+    //creates textnode with title, catagory, and text
+      var blog_text = blogs_array[post].text; 
+      var blog_title = document.createTextNode(blogs_array[post].title);
+      var blog_category = document.createTextNode(blog_date_category);
+      
+      //adds textnodes to corresponding elements
+      blogcard_title_content.appendChild(blog_title);
+      blogcard_title.appendChild(blogcard_title_content);
+      blogcard_category_content.appendChild(blog_category);
+      blogcard_title.appendChild(blogcard_category_content);
+
+    blogcard_content.innerHTML = blog_text;
+        
+    //add elements to main blog div
+    blogcard.appendChild(blogcard_title);
+
+    blogcard.appendChild(blogcard_content);
+    document.getElementById("blog_row").appendChild(blogcard);
 		}
     }
 };
 
-//gets the newest 5 messages from all catagories	
+//gets the newest 2 messages from all catagories	
 function getfiveposts(){ 
 	document.getElementById("blog_row").innerHTML = ""; //clears blog div
 	
@@ -92,11 +99,13 @@ function getfiveposts(){
 	var newblogposts=xhr.response; 
 	
 	var blogs_array = JSON.parse(xhr.response);
-	var blogs_array_firstfive = blogs_array .slice(0, 5); //slices array so only the frist five objects are used
+	var blogs_array_firstfive = blogs_array .slice(0, 2); //slices array so only the frist five objects are used
 	console.log("hi");
 	for (var post in blogs_array_firstfive) { 
        if (blogs_array_firstfive.hasOwnProperty(post)) {
-        
+        var blog_date = blogs_array[post].date;
+        var blog_category_text = blogs_array[post].name;
+        var blog_date_category= blogs_array[post].date+ ", in " + blog_category_text;
 		//create elements for full post, title, and content.
         var blogcard = document.createElement("div"); 
           	blogcard.id = blogs_array[post].ID;
@@ -104,9 +113,10 @@ function getfiveposts(){
 
         var blogcard_title = document.createElement("div") 
         	blogcard_title.className = 'card_title';
-        var blogcard_title_content = document.createElement("H2")
-
-        var blogcard_category_content = document.createElement("H5") 
+        var blogcard_title_content = document.createElement("div")
+            blogcard_title_content.className= "blog_title_line";
+        var blogcard_category_content = document.createElement("div") 
+            blogcard_category_content.className= "blog_category_line";
 
         var blogcard_content = document.createElement("div") 
         	blogcard_content.className = 'card_content';
@@ -114,17 +124,19 @@ function getfiveposts(){
 		//creates textnode with title, catagory, and text
     	var blog_text = blogs_array[post].text; 
    		var blog_title = document.createTextNode(blogs_array[post].title);
-   		var blog_category = document.createTextNode(blogs_array[post].name);
+   		var blog_category = document.createTextNode(blog_date_category);
    		
    		//adds textnodes to corresponding elements
    		blogcard_title_content.appendChild(blog_title);
    		blogcard_title.appendChild(blogcard_title_content);
    		blogcard_category_content.appendChild(blog_category);
+      blogcard_title.appendChild(blogcard_category_content);
+
 		blogcard_content.innerHTML = blog_text;
 		    
 		//add elements to main blog div
 		blogcard.appendChild(blogcard_title);
-		blogcard.appendChild(blogcard_category_content);
+
 		blogcard.appendChild(blogcard_content);
 		document.getElementById("blog_row").appendChild(blogcard);
 		}
@@ -145,36 +157,42 @@ function sortbycategory(category){
 	for (var post in blogs_array) {
        if (blogs_array.hasOwnProperty(post)) {
         
-		//create elements for full post, title, and content.
+		var blog_date = blogs_array[post].date;
+        var blog_category_text = blogs_array[post].name;
+        var blog_date_category= blogs_array[post].date+ ", in " + blog_category_text;
+    //create elements for full post, title, and content.
         var blogcard = document.createElement("div"); 
-          	blogcard.id = blogs_array[post].ID;
-			blogcard.className = 'card_blog';
+            blogcard.id = blogs_array[post].ID;
+      blogcard.className = 'card_blog';
 
         var blogcard_title = document.createElement("div") 
-        	blogcard_title.className = 'card_title';
-        var blogcard_title_content = document.createElement("H2")
-
-        var blogcard_category_content = document.createElement("H5") 
+          blogcard_title.className = 'card_title';
+        var blogcard_title_content = document.createElement("div")
+            blogcard_title_content.className= "blog_title_line";
+        var blogcard_category_content = document.createElement("div") 
+            blogcard_category_content.className= "blog_category_line";
 
         var blogcard_content = document.createElement("div") 
-        	blogcard_content.className = 'card_content';
+          blogcard_content.className = 'card_content';
 
-		//creates textnode with title, catagory, and text
-    	var blog_text = blogs_array[post].text; 
-   		var blog_title = document.createTextNode(blogs_array[post].title);
-   		var blog_category = document.createTextNode(blogs_array[post].name);
-   		
-   		//adds textnodes to corresponding elements
-   		blogcard_title_content.appendChild(blog_title);
-   		blogcard_title.appendChild(blogcard_title_content);
-   		blogcard_category_content.appendChild(blog_category);
-		blogcard_content.innerHTML = blog_text;
-		    
-		//add elements to main blog div
-		blogcard.appendChild(blogcard_title);
-		blogcard.appendChild(blogcard_category_content);
-		blogcard.appendChild(blogcard_content);
-		document.getElementById("blog_row").appendChild(blogcard);
+    //creates textnode with title, catagory, and text
+      var blog_text = blogs_array[post].text; 
+      var blog_title = document.createTextNode(blogs_array[post].title);
+      var blog_category = document.createTextNode(blog_date_category);
+      
+      //adds textnodes to corresponding elements
+      blogcard_title_content.appendChild(blog_title);
+      blogcard_title.appendChild(blogcard_title_content);
+      blogcard_category_content.appendChild(blog_category);
+      blogcard_title.appendChild(blogcard_category_content);
+
+    blogcard_content.innerHTML = blog_text;
+        
+    //add elements to main blog div
+    blogcard.appendChild(blogcard_title);
+
+    blogcard.appendChild(blogcard_content);
+    document.getElementById("blog_row").appendChild(blogcard);
 		}
     } 
 };
@@ -288,8 +306,16 @@ function submitcategory(){
 	xhr.open("POST","newcategory.php", true); //POST request
 	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
   	xhr.send(url); 
-  	console.log(xhr.response); 
-
+  	
+  	
+    document.getElementById("new_category").style.display = "none";
+    document.getElementById("postnew_category").style.display = "block";
+    var added_message = new_category + " has been added to the database";
+     
+    var added_message_textnode = document.createTextNode(added_message);
+      document.getElementById("postnew_category").appendChild(added_message_textnode);
+      //adds textnodes to corresponding elements
+     
 };
 
 

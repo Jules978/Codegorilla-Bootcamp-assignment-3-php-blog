@@ -12,14 +12,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') { //does stuff if the request method is
 
 		try {		
 			$sql = 'SELECT * FROM articles INNER JOIN categories ON articles.category_id=categories.id ORDER BY articles.id DESC' ;  //WHERE id ="'.$postid.'"
-			
-		
+					
 			$statement = $connection->query($sql); 
 			$result = $statement->fetchall(\PDO::FETCH_ASSOC);
 			$blogJSON = json_encode($result);
 
 			echo $blogJSON;
-			
 		}
 
 		catch(PDOException $e) {
@@ -31,7 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') { //does stuff if the request method is
 		if(isset($_SERVER['HTTP_REFERER'])) {
 		    $previous = $_SERVER['HTTP_REFERER'];
 		}
-
 
 	}elseif(isset($_GET["action"]) && $_GET['action'] == "sort") {
 		$dsn = 'mysql:dbname=blog;host=127.0.0.1';
@@ -44,19 +41,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') { //does stuff if the request method is
 		$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 		try {		
-			$sql = 'SELECT * FROM articles INNER JOIN categories ON articles.category_id=categories.id WHERE category_id ="'.$category.'" ORDER BY articles.id DESC';  //WHERE id ="'.$postid.'"
+			$sql = 'SELECT * FROM articles INNER JOIN categories ON articles.category_id=categories.id WHERE category_id ="'.$category.'" ORDER BY articles.id DESC';
 			
-
-
-
-
 			$statement = $connection->query($sql); 
 			$result = $statement->fetchall(\PDO::FETCH_ASSOC);
 			$blogJSON = json_encode($result);
 
 			echo $blogJSON;
 			
-			}
+		}
 
 		catch(PDOException $e) {
 			echo $sql . "<br>" . $e->getMessage();
@@ -67,12 +60,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') { //does stuff if the request method is
 		if(isset($_SERVER['HTTP_REFERER'])) {
 		    $previous = $_SERVER['HTTP_REFERER'];
 		}
+
 	}elseif(isset($_GET["action"]) && $_GET['action'] == "cat") {
 		$dsn = 'mysql:dbname=blog;host=127.0.0.1';
 		$user_name = 'root';
 		$pass_word = '';
-		$db='blogdb';
-		
+		$db='blog';
 		
 		$connection = new PDO($dsn, $user_name, $pass_word);
 		$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -86,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') { //does stuff if the request method is
 
 			echo $blogJSON;
 			
-			}
+		}
 
 		catch(PDOException $e) {
 			echo $sql . "<br>" . $e->getMessage();

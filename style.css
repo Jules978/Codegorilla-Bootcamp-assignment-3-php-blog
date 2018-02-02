@@ -8,6 +8,20 @@ body {
     background: #96B1BD;
     color: #333;
 }
+
+h2{
+
+    font-size: 30px;
+    
+}
+
+h3{
+
+    font-size: 30px;
+    text-decoration: underline;
+}
+
+
 #blogpage{
 
     
@@ -85,7 +99,19 @@ body {
 
 }
 
+#postnew_category{
 
+text-align:center;
+    font-size: 30px;
+    display: none;
+    margin: auto;
+    margin-top: 10px;
+    padding: 5px;
+    width: 90%;
+    
+    padding: 5px;
+    background-color: #FBFBFB;
+}
 
 #blog_submit{
     margin-top: 10px;
@@ -131,88 +157,13 @@ body {
 
     background-color: #F2A073;
 }
-/* Create two unequal columns that floats next to each other */
-/* Left column */
-
-.row{
-
-    margin-top: 20px;
-}
-.leftcolumn {   
-    float: left;
-    width: 75%;
- 
-}
-
-/* Right column */
-.rightcolumn {
-    float: left;
-    width: 24%;
-    margin-left: 1%;
-    background-color: #FBFBFB; 
-    padding: 5px;
-    padding-top:20px;
-}
-
-
-
-.sidebar_category {
-    background-color: #F2A073;
-    width: 100%;
-    height: 10%;
-    margin-top: 5px;
-    padding: 2px;
-}
-
-
-
-/* Add a card effect for articles */
-.card_blog {
-     background-color: #FBFBFB;
-     
-     margin-bottom: 20px;
-}
-
-#card_categories {
-    
-     
-     margin-top: 20px;
-}
-#card_aboutme {
-    padding: 5px;
-     
-     
-}
-.card_title{
-    padding: 2px;
-    background-color: #F2A073;
-    width: 100%;
-}
-
-.card_content{
- padding: 5px;
-}
-/* Clear floats after the columns */
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-/* Footer */
-.footer {
-    padding: 20px;
-    text-align: center;
-    background: #FBFBFB;
-    margin-top: 20px;
-}
-
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: #333;
+    font-size: 20px;
 }
 
 li {
@@ -257,6 +208,133 @@ li.dropdown {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+.row{
+
+    margin-top: 20px;
+}
+.leftcolumn {   
+    float: left;
+    width: 75%;
+ 
+}
+
+/* Right column */
+.rightcolumn {
+    float: left;
+    width: 24%;
+    margin-left: 1%;
+    background-color: #FBFBFB; 
+    padding: 5px;
+    padding-top:20px;
+}
+
+
+
+.sidebar_category {
+    background-color: #F2A073;
+    width: 100%;
+    height: 10%;
+    margin-top: 5px;
+    padding: 2px;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+
+
+/* Add a card effect for articles */
+
+
+#card_categories {
+    
+     
+     margin-top: 20px;
+}
+#card_aboutme {
+    
+     
+     
+}
+
+.card_blog {
+     background-color: #F2A073;
+     text-align:center;
+     margin-bottom: 20px;
+     padding: 1%;
+     
+}
+
+.card_title{
+   
+    text-align: center;
+   
+}
+
+.blog_title_line{
+    margin: auto;
+    margin-top: 5px;
+    background-color: #333;
+    color: #FBFBFB;
+   width: 98%;
+    height: 50px;
+    font-size: 30px;
+    padding-top: 5px;
+
+
+}
+.blog_category_line{
+    margin: auto;
+     width: 98%;
+   background-color: #F2A073;
+     color: #333;
+    padding: 2px ;
+    font-weight: bold;
+
+}
+
+.card_content{ 
+    margin: auto;
+    text-align: left;
+    background-color: #FBFBFB;
+ padding: 5px;
+ width: 98%;
+ 
+}
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Footer */
+.footer {
+    padding: 20px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    background: #FBFBFB;
+    margin-top: 20px;
+}
+
+
+
+#images_links {
+    margin-top: 5px;
+    margin: auto;
+width: 960px;
+height: auto;
+overflow: hidden;
+}
+#images_links a {
+display: inline;
+margin: 0 10px;}
+
+a:link {
+    text-decoration: none;
+}
+
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
 @media (max-width: 800px) {
     .leftcolumn, .rightcolumn {   

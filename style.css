@@ -7,6 +7,7 @@ body {
     padding: 20px;
     background: #96B1BD;
     color: #333;
+
 }
 
 h2{
@@ -164,18 +165,21 @@ ul {
     overflow: hidden;
     background-color: #333;
     font-size: 20px;
+
 }
 
 li {
     float: left;
+    cursor: pointer;
 }
 
 li a, .dropbtn {
     display: inline-block;
-    color: #FBFBFB;
+    color: #F2A073;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    
 }
 
 li a:hover, .dropdown:hover .dropbtn {
@@ -203,10 +207,11 @@ li.dropdown {
     text-align: left;
 }
 
-.dropdown-content a:hover {background-color: #FBFBFB}
+.dropdown-content a:hover {background-color: #F2A073}
 
 .dropdown:hover .dropdown-content {
     display: block;
+
 }
 
 .row{

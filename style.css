@@ -318,7 +318,21 @@ li.dropdown {
     margin-top: 20px;
 }
 
+.card_content ul{
+    background-color: #FBFBFB;
+font-size: initial;
+    list-style: initial;
+    margin: initial;
+    padding: 0 0 0 40px;
 
+}
+
+.my_container li
+{
+    display: list-item;
+font-size: initial;
+float: initial;
+}
 
 #images_links {
     margin-top: 5px;

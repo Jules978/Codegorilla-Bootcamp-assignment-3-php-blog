@@ -7,6 +7,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$db='blog';
 
 	$msg =  $_POST["message"];
+	$date = date(" F jS, Y (H:s): ");
+	$fullmessage = $date.$msg;
 	$sectionid= $_POST["sectionid"];
 	$int_sectionid = (int)$sectionid;
  
@@ -14,12 +16,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	try {
 		$sql = "INSERT INTO comments (comment, article_id)" .
-		 "VALUES ('$msg','$int_sectionid')";
-		$connection->exec($sql);
-
+		 "VALUES (:fullmessage,:int_sectionid)";
+		
+			$statement = $connection->prepare($sql);
+			$statement->bindParam(":fullmessage", $fullmessage);
+			$statement->bindParam(":int_sectionid", $int_sectionid);
+			
+			$statement->execute();
 		
 			
-		echo $int_sectionid+ "comment placed ";
+		echo $fullmessage;
 		
 		}
 
@@ -58,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 		//var_dump($resultJSON) ;
 		//echo $commentJSON;
-		echo "hi";
+		echo $commentJSON;
 
 
 		}

@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') { //does stuff if the request method is
 		$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 		try {		
-			$sql = 'SELECT * FROM articles INNER JOIN categories ON articles.category_id=categories.id ORDER BY articles.id DESC' ;  //WHERE id ="'.$postid.'"
+			$sql = 'SELECT * FROM articles INNER JOIN categories ON articles.category_id=categories.id ORDER BY articles.aid DESC' ;  //WHERE id ="'.$postid.'"
 					
 			$statement = $connection->query($sql); 
 			$result = $statement->fetchall(\PDO::FETCH_ASSOC);
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') { //does stuff if the request method is
 		$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 		try {		
-			$sql = 'SELECT * FROM articles INNER JOIN categories ON articles.category_id=categories.id WHERE category_id ="'.$category.'" ORDER BY articles.id DESC';
+			$sql = 'SELECT * FROM articles INNER JOIN categories ON articles.category_id=categories.id WHERE category_id ="'.$category.'" ORDER BY articles.aid DESC';
 			
 			$statement = $connection->query($sql); 
 			$result = $statement->fetchall(\PDO::FETCH_ASSOC);

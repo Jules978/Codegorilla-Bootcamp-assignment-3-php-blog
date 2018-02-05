@@ -24,7 +24,7 @@ formData.append("blogtext", blog_text);
 
 xhr.open("POST","submit.php", true); 
 xhr.send(formData);
-console.log(xhr.response);
+
 	
   	
   	document.getElementById("postblog").style.display = "none";
@@ -100,7 +100,7 @@ function getfiveposts(){
 	
 	var blogs_array = JSON.parse(xhr.response);
 	var blogs_array_firstfive = blogs_array .slice(0, 2); //slices array so only the frist five objects are used
-	console.log("hi");
+	
 	for (var post in blogs_array_firstfive) { 
        if (blogs_array_firstfive.hasOwnProperty(post)) {
         var blog_date = blogs_array[post].date;
@@ -108,7 +108,7 @@ function getfiveposts(){
         var blog_date_category= blogs_array[post].date+ ", in " + blog_category_text;
 		//create elements for full post, title, and content.
         var blogcard = document.createElement("div"); 
-          	blogcard.id = blogs_array[post].ID;
+          	blogcard.id = blogs_array[post].id;
 			blogcard.className = 'card_blog';
 
         var blogcard_title = document.createElement("div") 
@@ -139,6 +139,46 @@ function getfiveposts(){
 
 		blogcard.appendChild(blogcard_content);
 		document.getElementById("blog_row").appendChild(blogcard);
+
+    //create comment section
+
+    var commentfield_id= "comments"+blogs_array[post].id;
+    var comment_section_id= "commentsection"+blogs_array[post].id;
+    var comment_input_id= "commentinput"+blogs_array[post].id;
+
+    var commentsection = document.createElement("div");
+    commentsection.className = "commentsection";
+    commentsection.id= blogcard.id;
+    //commentsection.onload = function(){ };
+     var comments = document.createElement("div");
+     comments.id = commentfield_id;
+     var commentinput = document.createElement("div");
+      
+      
+        //commentform.onsubmit =  postcomment(this.id) {{ return false }};
+        var commenttext = document.createElement("input");
+        commenttext.id = comment_input_id;
+        commenttext.setAttribute('type', 'text');
+         commenttext.placeholder='Your comment';
+         var commentsubmit = document.createElement("div");
+        commentsubmit.id =  blogcard.id;
+        commentsubmit.innerHTML="send comment";
+        commentsubmit.onclick =  function() { submitcomment(this.id) };
+        var commenttest = document.createElement("div");
+        commenttest.id =  blogcard.id;
+        commenttest.innerHTML="get comments";
+        commenttest.onclick =  function() { getcommentids(this.id) };
+      
+        //commentsubmit.onsubmit =  postcomment(this.id) { return false };
+commentinput.appendChild(commenttext);
+commentinput.appendChild(commentsubmit);
+commentinput.appendChild(commenttest);
+
+commentsection.appendChild(comments);
+commentsection.appendChild(commentinput);
+blogcard.appendChild(commentsection);
+
+
 		}
     }
 };
@@ -200,13 +240,13 @@ function sortbycategory(category){
 
 function loadcategories(){
 
-	console.log("sending");
+	
 	var surl = "getmessages.php?action=cat"; 
 	xhr.open('GET', surl, false);
  	
 	xhr.send();
 	var category_array = JSON.parse(xhr.response);
-	console.log(category_array);
+	
 	for (var cat in category_array) {
        if (category_array.hasOwnProperty(cat)) {  
        	var category_name = category_array[cat].name;
@@ -300,7 +340,7 @@ document.getElementById("new_category").style.display = "block";
 
 function submitcategory(){
  var new_category =  document.getElementById('newcategory_input').value;  
-	console.log(new_category);
+
 	
 	 var url= "newcategory="+ new_category ;  
 	xhr.open("POST","newcategory.php", true); //POST request
@@ -319,7 +359,37 @@ function submitcategory(){
 };
 
 
+function submitcomment(sectionid){
+var comment_input_id = "commentinput"+sectionid;
+var int_sectionid = parseInt(sectionid);
+//console.log(int_sectionid);
+var msg = document.getElementById(comment_input_id).value;
 
+var url= "message="+ msg +"&sectionid="+ int_sectionid;  
+  xhr.open("POST","comments.php", true); //POST request
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
+    xhr.send(url); 
+
+
+} 
+
+function getcommentids(sectionid){
+
+var comment_input_id = "commentinput"+sectionid;
+var int_sectionid = parseInt(sectionid);
+//console.log(int_sectionid);
+
+
+var url= "comments.php?action=read&sectionid="+ int_sectionid;  
+  xhr.open("GET",url, true); 
+  xhr.setRequestHeader("Content-type", 'application/json; charset=utf-8'); 
+    xhr.send(url); 
+  console.log(xhr.response);
+
+  //var comments_array = JSON.parse(xhr.response);
+  //console.log(comments_array);
+
+}
 
 
 

@@ -7,7 +7,6 @@ body {
     padding: 20px;
     background: #96B1BD;
     color: #333;
-
 }
 
 h2{
@@ -154,10 +153,7 @@ text-align:center;
     color: black;
 }
 
-#newpostlink{
 
-    background-color: #F2A073;
-}
 ul {
     list-style-type: none;
     margin: 0;
@@ -165,7 +161,7 @@ ul {
     overflow: hidden;
     background-color: #333;
     font-size: 20px;
-
+    
 }
 
 li {
@@ -175,11 +171,11 @@ li {
 
 li a, .dropbtn {
     display: inline-block;
-    color: #F2A073;
+    color: #FBFBFB;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    
+
 }
 
 li a:hover, .dropdown:hover .dropbtn {
@@ -188,6 +184,8 @@ li a:hover, .dropdown:hover .dropbtn {
 
 li.dropdown {
     display: inline-block;
+
+
 }
 
 .dropdown-content {
@@ -205,13 +203,26 @@ li.dropdown {
     text-decoration: none;
     display: block;
     text-align: left;
+
 }
 
-.dropdown-content a:hover {background-color: #F2A073}
+.dropdown-content a:hover {background-color: #F2A073;}
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
 
+#newpostlink{
+
+    background-color: #F2A073;
+}
+#navbar_list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    font-size: 20px;
 }
 
 .row{
@@ -267,6 +278,7 @@ li.dropdown {
      text-align:center;
      margin-bottom: 20px;
      padding: 1%;
+     overflow: auto;
      
 }
 
@@ -304,8 +316,27 @@ li.dropdown {
     background-color: #FBFBFB;
  padding: 5px;
  width: 98%;
+overflow: auto;
  
 }
+.card_content ul{
+    background-color: #FBFBFB;
+font-size: initial;
+    list-style: initial;
+    margin: initial;
+    padding: 0 0 0 40px;
+text-align: initial;
+float: initial;
+}
+
+.my_container li
+{
+    display: list-item;
+font-size: initial;
+float: none;
+}
+
+
 /* Clear floats after the columns */
 .row:after {
     content: "";
@@ -323,21 +354,7 @@ li.dropdown {
     margin-top: 20px;
 }
 
-.card_content ul{
-    background-color: #FBFBFB;
-font-size: initial;
-    list-style: initial;
-    margin: initial;
-    padding: 0 0 0 40px;
 
-}
-
-.my_container li
-{
-    display: list-item;
-font-size: initial;
-float: initial;
-}
 
 #images_links {
     margin-top: 5px;

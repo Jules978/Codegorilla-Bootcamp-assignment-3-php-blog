@@ -29,7 +29,7 @@ Week 3 (version 1):
 Story id | as a..| I want..| so ..
 ------------ | -------------| -------------| -------------
 W3-001 | Blogger| post articles on my blog| I can share my ideas with others
-W3-002 | Reader| To have an overview of my favorite bloggers articles, most recent posts at the top| I know I'm reading the most recent posts
+W3-002 | Reader| To have an overview of my favorite bloggers articles, most recent posts at the top| read the most recent posts
 W3-003| Blogger| Link my article to a category| Mmy readers can find easily find articles on specific topics
 W3-004 | Reader| To select articles from a specific category, via a sidebar| I can easily find all articles related to a certain topic
 W3-005 | Blogger| to add categories myself| I don't depend on my blogs developer as much
@@ -37,13 +37,13 @@ W3-006 | Blogger| to add multiple categories to a single article| i don't have t
 W3-007 | Blogger| to be able to format the text| I can convey my messages more clearly.
 W3-008 | Blogger| to add images to my articles| so I can show off my cats
 
+Week 4 (Version 2):
 
-week 4 (version 2):
 Story id | as a..| I want..| so..
 ------------ | -------------| -------------| -------------
 W4-001 | Blogger| a text-expander that automatically translates predefined abbreviations to full text| can write articles faster
 W4-002 | Reader| leave anonymous comments on articles| I can voice my opinion on articles
-W4-003 | Reader| To select articles from a specific category, via a sidebar. Without reloading the entire page| I can easily find all articles related to a certain topic
+W4-003 | Reader| To select articles from a specific category, without reloading the entire page| see W3-004
 W4-004 | Blogger| to be able to remove individual comments| I can stop trolls and spam
 W4-005 | Blogger| to be able to decide whether my article will have a commentsection| To prevent offensive comments on sensitive topics.
 

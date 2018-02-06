@@ -3,7 +3,7 @@ A blog+database, for the third CodeGorilla assignment. Live version: http://wijz
 
 # Version 1.6 (06.02.2018)
 
-version 1.6: added commentsection, and multiple comments per blogpost [w3-006; w4-002].
+version 1.6: added commentsection, the option to delete individual comments, and multiple comments per blogpost [w3-006; w4-002; w4-002].
 
 version 1.5:  minor fixes, cleaned up a bit, added images and text to main page.
 
@@ -60,16 +60,17 @@ W4-005 | Blogger| to be able to decide whether my article will have a commentsec
 - W3-007
 - W3-008
 
-- W4-001
+
 - W4-002
 - W4-003
+- W4-004
 
 ## to do:
 
-
-
-- W4-004
+- W4-001
 - W4-005
+- combine some of the php files
+- clean up code
 
 
 

@@ -1,7 +1,9 @@
 # blog
 A blog+database, for the third CodeGorilla assignment. Live version: http://wijzijncodegorilla.nl/julia/blog/
 
-# Version 1.5 (02.02.2018)
+# Version 1.6 (06.02.2018)
+
+version 1.6: added commentsection, and multiple comments per blogpost [w3-006; w4-002].
 
 version 1.5:  minor fixes, cleaned up a bit, added images and text to main page.
 
@@ -53,16 +55,19 @@ W4-005 | Blogger| to be able to decide whether my article will have a commentsec
 - W3-002
 - W3-003
 - W3-004
+- W3-006
 - W3-005
 - W3-007
 - W3-008
 
+- W4-001
 - W4-002
 - W4-003
+
 ## to do:
 
-- W3-006
-- W4-001
+
+
 - W4-004
 - W4-005
 

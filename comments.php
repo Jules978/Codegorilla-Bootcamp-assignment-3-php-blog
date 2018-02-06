@@ -1,10 +1,11 @@
 <?php
 	
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $dsn = 'mysql:dbname=blog;host=127.0.0.1';
+    
+    $dsn = 'mysql:dbname=blogv2;host=127.0.0.1';
 		$user_name = 'root';
 		$pass_word = '';
-		$db='blog';
+		$db='blogv2';
 
 	$msg =  $_POST["message"];
 	$date = date(" F jS, Y (H:s): ");
@@ -42,10 +43,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 } elseif ($_SERVER['REQUEST_METHOD'] == 'GET') { //does stuff if the request method is get
 	if(isset($_GET["action"]) && $_GET['action'] == "read") {
-		 $dsn = 'mysql:dbname=blog;host=127.0.0.1';
+		$dsn = 'mysql:dbname=blogv2;host=127.0.0.1';
 		$user_name = 'root';
 		$pass_word = '';
-		$db='blog';
+		$db='blogv2';
 
 		$sectionid= $_GET["sectionid"];
 		$int_sectionid = (int)$sectionid;
@@ -80,10 +81,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		}
 
 	} elseif(isset($_GET["action"]) && $_GET['action'] == "read") {
-		 $dsn = 'mysql:dbname=blog;host=127.0.0.1';
+		$dsn = 'mysql:dbname=blogv2;host=127.0.0.1';
 		$user_name = 'root';
 		$pass_word = '';
-		$db='blog';
+		$db='blogv2';
 
 		$id =  $_GET['id']; 
 		$mykey= $_GET['mykey'];

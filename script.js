@@ -491,13 +491,14 @@ var url= "comments.php?action=read&sectionid="+ int_sectionid;
     xhr.send(url); 
    var comments_array = JSON.parse(xhr.response);
   for (var com in comments_array) {
-    var commentid = comments_array[com].id;
-    var commenttext = comments_array[com].Comment;
+    var commentid = comments_array[com].comment_id;
+    var commenttext = comments_array[com].comment;
     var articleid = comments_array[com].article_id;
     
    var commentlist = document.getElementById("commentlist_"+articleid);
    var comment_item = document.createElement("li"); 
    comment_item.id = "comment_"+commentid;
+   comment_item.onclick = function(){deletecomment(this.id)};
    comment_item.innerHTML = commenttext;
 
    commentlist.appendChild(comment_item);
@@ -505,7 +506,25 @@ var url= "comments.php?action=read&sectionid="+ int_sectionid;
   }
 }
 
+function deletecomment(id){
 
+   var commentid_string=id;
+
+    var commentid = commentid_string.substring(8, );
+
+    if (confirm("Delete this comment?")) {
+      var url= "commentid="+ commentid;
+      xhr.open("POST","delete.php", true); //POST request
+      xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
+      xhr.send(url); 
+      console.log(xhr.response);
+
+    } else {
+        txt = "Comment stays!";
+    }
+
+
+}
 
 
   

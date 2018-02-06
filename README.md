@@ -71,6 +71,7 @@ W4-005 | Blogger| to be able to decide whether my article will have a commentsec
 - W4-005
 - combine some of the php files
 - clean up code
+- css
 
 
 

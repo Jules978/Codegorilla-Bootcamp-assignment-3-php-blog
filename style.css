@@ -123,6 +123,13 @@ text-align:center;
     width: 30%;
 
 }
+
+#postblog textarea{
+
+    width: 100%;
+    height: 25%;
+}
+
 /* Header/Blog Title */
 #header {
     padding: 5px;

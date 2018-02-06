@@ -13,7 +13,7 @@
   <h2>THIS IS A BLOG</h2>
 </div>
 
-<ul>
+<ul id= "topbar">
   <li><a href="index.html">Home</a></li>
   <li><a href="#newcategory" onclick= "showsubmitnewcategory()" >Add category</a></li>
   </li>
@@ -34,18 +34,15 @@
      Title:<br />     
       <input id="title_input" type="text" placeholder="title" name="title_input" ><br />
       Category: <br/>
-      <select id="categories_input" = name="categories_input" size="4"> 
+      <select multiple id="categories_input" = name="categories_input" size="4" > 
           
         </select><br />
-          <textarea name="editor1" id="editor1" rows="10" cols="80">         
+          <textarea name="editor1" id="editor1" >         
             </textarea> 
-            <script>
-                // Replace the <textarea id="editor1"> with a CKEditor
-                // instance, using default configuration.
-                CKEDITOR.replace( 'editor1' );
-            </script>
-      
+            
+    
       <input id="blog_submit" type="submit" value="ENTER" onclick= "submitblog(); return false;">
+      <div onclick= "loadsubmitcategories() "> TEST ME </div>
     </form>
  </div>
 
@@ -53,7 +50,16 @@
   <h2>Footer</h2>
   <p> contact and stuff</p>
 </div>
+<script>
+  
+  
+                // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+                CKEDITOR.replace( 'editor1' );
 
+
+</script>
 <script src="script.js"></script>
+
 </body>
 </html>

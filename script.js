@@ -7,14 +7,15 @@ var xhr = new XMLHttpRequest();
 
 function submitblog(){  //submits new blog post to submit.php
 	var blog_title =  document.getElementById('title_input').value;  
-	var blog_category = document.getElementById('categories_input').value;
-	 var blog_text = CKEDITOR.instances.editor1.getData();
+	
+var blog_text = CKEDITOR.instances.editor1.getData();
 	 
+var blog_categories = $("#categories_input").val() || [];
 
  var formData = new FormData();
 
-formData.append("blogtitle", blog_title);
-formData.append("blogcategory",blog_category); // number 123456 is immediately converted to a string "123456"
+ formData.append("blogtitle", blog_title);
+formData.append("blogcategories",blog_categories); // number 123456 is immediately converted to a string "123456"
 formData.append("blogtext", blog_text);
 // HTML file input, chosen by user
 
@@ -23,12 +24,12 @@ formData.append("blogtext", blog_text);
 
 
 xhr.open("POST","submit.php", true); 
-xhr.send(formData);
+xhr.send(formData);  
 
 	
   	
-  	document.getElementById("postblog").style.display = "none";
-  	document.getElementById("postmessage").style.display = "block"; 
+  document.getElementById("postblog").style.display = "none";
+  document.getElementById("postmessage").style.display = "block"; 
 
 };
 
@@ -50,10 +51,10 @@ function getallposts(){
         //create elements for full post, title, and content.
        var blog_date = blogs_array[post].date;
         var blog_category_text = blogs_array[post].name;
-        var blog_date_category= blogs_array[post].date+ ", in " + blog_category_text;
+        var blog_date_category= blogs_array[post].date; //+ ", in " + blog_category_text
     //create elements for full post, title, and content.
         var blogcard = document.createElement("div"); 
-            blogcard.id = blogs_array[post].aid;
+            blogcard.id = blogs_array[post].a_id;
       blogcard.className = 'card_blog';
 
         var blogcard_title = document.createElement("div") 
@@ -87,9 +88,9 @@ function getallposts(){
 
     //create comment section
 
-    var commentfield_id= "comments"+blogs_array[post].aid;
-    var comment_section_id= "commentsection"+blogs_array[post].aid;
-    var comment_input_id= "commentinput"+blogs_array[post].aid;
+    var commentfield_id= "comments"+blogs_array[post].a_id;
+    var comment_section_id= "commentsection"+blogs_array[post].a_id;
+    var comment_input_id= "commentinput"+blogs_array[post].a_id;
 
     var commentsection = document.createElement("div");
     commentsection.className = "commentsection";
@@ -98,7 +99,7 @@ function getallposts(){
      var comments = document.createElement("div");
      comments.id = commentfield_id;
      var commentlist=document.createElement("ul");
-     commentlist.id = "commentlist_"+blogs_array[post].aid;
+     commentlist.id = "commentlist_"+blogs_array[post].a_id;
      commentlist.className = "commentlist";
      var commentinput = document.createElement("div");
       
@@ -143,15 +144,15 @@ function getfiveposts(){
 	
 	var blogs_array = JSON.parse(xhr.response);
 	var blogs_array_firstfive = blogs_array .slice(0, 2); //slices array so only the frist five objects are used
-	console.log(blogs_array_firstfive);
+	
 	for (var post in blogs_array_firstfive) { 
        if (blogs_array_firstfive.hasOwnProperty(post)) {
         var blog_date = blogs_array[post].date;
         var blog_category_text = blogs_array[post].name;
-        var blog_date_category= blogs_array[post].date+ ", in " + blog_category_text;
+        var blog_date_category= blogs_array[post].date; //+ ", in " + blog_category_text
 		//create elements for full post, title, and content.
         var blogcard = document.createElement("div"); 
-          	blogcard.id = blogs_array[post].aid;
+          	blogcard.id = blogs_array[post].a_id;
 			blogcard.className = 'card_blog';
 
         var blogcard_title = document.createElement("div") 
@@ -186,9 +187,9 @@ function getfiveposts(){
     //create comment section
 
 
-    var commentfield_id= "comments"+blogs_array[post].aid;
-    var comment_section_id= "commentsection"+blogs_array[post].aid;
-    var comment_input_id= "commentinput"+blogs_array[post].aid;
+    var commentfield_id= "comments"+blogs_array[post].a_id;
+    var comment_section_id= "commentsection"+blogs_array[post].a_id;
+    var comment_input_id= "commentinput"+blogs_array[post].a_id;
 
     var commentsection = document.createElement("div");
     commentsection.className = "commentsection";
@@ -197,7 +198,7 @@ function getfiveposts(){
      var comments = document.createElement("div");
      comments.id = commentfield_id;
      var commentlist=document.createElement("ul");
-     commentlist.id = "commentlist_"+blogs_array[post].aid;
+     commentlist.id = "commentlist_"+blogs_array[post].a_id;
      commentlist.className = "commentlist";
      var commentinput = document.createElement("div");
       
@@ -241,17 +242,19 @@ function sortbycategory(category){
 	xhr.open('GET', surl, false);
  	var newblogposts=xhr.response; 
 	xhr.send();
+  console.log(xhr.response);
 	var blogs_array = JSON.parse(xhr.response);
-console.log(blogs_array);
+  
+
 	for (var post in blogs_array) {
        if (blogs_array.hasOwnProperty(post)) {
         
 		var blog_date = blogs_array[post].date;
         var blog_category_text = blogs_array[post].name;
-        var blog_date_category= blogs_array[post].date+ ", in " + blog_category_text;
+        var blog_date_category= blogs_array[post].date; //+ ", in " + blog_category_text
     //create elements for full post, title, and content.
         var blogcard = document.createElement("div"); 
-            blogcard.id = blogs_array[post].aid;
+            blogcard.id = blogs_array[post].a_id;
 
       blogcard.className = 'card_blog';
 
@@ -285,9 +288,9 @@ console.log(blogs_array);
     document.getElementById("blog_row").appendChild(blogcard);
     //create comment section
 
-    var commentfield_id= "comments"+blogs_array[post].aid;
-    var comment_section_id= "commentsection"+blogs_array[post].aid;
-    var comment_input_id= "commentinput"+blogs_array[post].aid;
+    var commentfield_id= "comments"+blogs_array[post].a_id;
+    var comment_section_id= "commentsection"+blogs_array[post].a_id;
+    var comment_input_id= "commentinput"+blogs_array[post].a_id;
 
     var commentsection = document.createElement("div");
     commentsection.className = "commentsection";
@@ -296,7 +299,7 @@ console.log(blogs_array);
      var comments = document.createElement("div");
      comments.id = commentfield_id;
      var commentlist=document.createElement("ul");
-     commentlist.id = "commentlist_"+blogs_array[post].aid;
+     commentlist.id = "commentlist_"+blogs_array[post].a_id;
      commentlist.className = "commentlist";
      var commentinput = document.createElement("div");
       
@@ -339,11 +342,13 @@ function loadcategories(){
  	
 	xhr.send();
 	var category_array = JSON.parse(xhr.response);
+  //console.log(category_array);
 	
 	for (var cat in category_array) {
        if (category_array.hasOwnProperty(cat)) {  
        	var category_name = category_array[cat].name;
-       	var category_id = category_array[cat].id;
+       	var category_id = category_array[cat].c_id;
+       
 
        	
        //adding categories to sidebar
@@ -400,7 +405,7 @@ function loadsubmitcategories(){
 	for (var cat in category_array) {
        if (category_array.hasOwnProperty(cat)) {  
        	var category_name = category_array[cat].name;
-       	var category_id = category_array[cat].id;
+       	var category_id = category_array[cat].c_id;
 
        	
 
@@ -465,7 +470,8 @@ var url= "message="+ msg +"&sectionid="+ int_sectionid;
   xhr.open("POST","comments.php", true); //POST request
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
     xhr.send(url); 
-  document.getElementById(comment_input_id).innerHTML= "";
+  document.getElementById(comment_input_id).value = '';
+  console.log(comment_input_id);
 getcomments(articleid);
 
 } 

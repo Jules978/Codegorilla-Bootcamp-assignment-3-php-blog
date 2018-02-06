@@ -1,9 +1,9 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-   $dsn = 'mysql:dbname=blog;host=127.0.0.1';
+   $dsn = 'mysql:dbname=blogv2;host=127.0.0.1';
 	$user_name = 'root';
 	$pass_word = '';
-	$db='blog';
+	$db='blogv2';
 	$new_category =   $_POST["newcategory"];
 
  	$connection = new PDO($dsn, $user_name, $pass_word);

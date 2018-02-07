@@ -1,4 +1,6 @@
 <?php
+
+//post new article to database
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $dsn = 'mysql:dbname=blogv2;host=127.0.0.1';
 	$user_name = 'root';
@@ -11,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$blog_text= $_POST["blogtext"];
 	$date = date("F jS Y");
 	$disable_comments = $_POST["disablecomments"];
-	var_dump($disable_comments);
+	
  	$connection = new PDO($dsn, $user_name, $pass_word);
 	$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	try {
@@ -24,30 +26,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$statement->bindParam(":disable_comments", $disable_comments);
 			$statement->execute();
 		    $last_id = $connection->lastInsertId();
-		    
-		    
+		     
 
 		   foreach ($categories_array as $cat) {
-    $int_cat = (int)$cat;
-    $sql2 = "INSERT INTO articles_categories (article_id, category_id) " .
-			 "VALUES (:last_id, :int_cat)";
-			$statement = $connection->prepare($sql2);
-			$statement->bindParam(":last_id", $last_id);
-			$statement->bindParam(":int_cat", $int_cat);
-		
-			$statement->execute();
-			echo $last_id;
-			
+    			$int_cat = (int)$cat;
+    			$sql2 = "INSERT INTO articles_categories (article_id, category_id) " .
+			 		"VALUES (:last_id, :int_cat)";
+				$statement = $connection->prepare($sql2);
+				$statement->bindParam(":last_id", $last_id);
+				$statement->bindParam(":int_cat", $int_cat);
+				$statement->execute();
 			} 
-			
-			
-			
-			
+	}
 
-
-		}
-
-		catch(PDOException $e) {
+	catch(PDOException $e) {
 			echo $sql . "<br>" . $e->getMessage();
 		}
 
@@ -55,8 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 		if(isset($_SERVER['HTTP_REFERER'])) {
 		    $previous = $_SERVER['HTTP_REFERER'];
-		}
-		
+	}
 } 
 ?>
 

@@ -1,65 +1,50 @@
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="style.css">
-<title>My blog </title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>My blog </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
-<body onload="loadsubmitcategories()">
+<body onload="textexpand(); loadsubmitcategories()">
 
-<div id="header">
-  <h2>THIS IS A BLOG</h2>
-</div>
+  <div id="header">
+    <h2>THIS IS A BLOG</h2>
+  </div>
 
-<ul id= "topbar">
-  <li><a href="index.html">Home</a></li>
-  <li><a href="#newcategory" onclick= "showsubmitnewcategory()" >Add category</a></li>
-  </li>
-  <li style="float:right"><a id="newpostlink" href="submit.html">Add new post</a></li>
-</ul>
+  <ul id= "topbar">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="#newcategory" onclick= "showsubmitnewcategory()" >Add category</a></li>
+    </li>
+    <li style="float:right"><a id="newpostlink" href="submit.html">Add new post</a></li>
+  </ul>
 
-<div id="postmessage"> Your blog has been posted! </div> 
-<div id="postnew_category">  </div> 
+  <div id="postmessage"> Your blog has been posted! </div> 
+  <div id="postnew_category">  </div> 
 
-<div id="new_category">
-  New Category:<br />     
-      <input id="newcategory_input" type="text" placeholder="category" name="newcategory_input" >
-      <div id="submit_newcategory" onclick= "submitcategory()">Send</div>
-</div>
+  <div id="new_category">
+    New Category:<br />     
+    <input id="newcategory_input" type="text" placeholder="category" name="newcategory_input" >
+    <div id="submit_newcategory" onclick= "submitcategory()">Send</div>
+  </div>
 
-<div id="postblog">
+  <div id="postblog">
     <form id="submit_chat" onsubmit="submitblog(); return false;">
-     Title:<br />     
+      Title:<br />     
       <input id="title_input" type="text" placeholder="title" name="title_input" ><br />
       Category: <br/>
-      <select multiple id="categories_input" = name="categories_input" size="4" > 
-          
-        </select><br />
-          <textarea name="editor1" id="editor1" >         
-            </textarea> 
-            
+      <select multiple id="categories_input" = name="categories_input" size="4" ></select><br />
       <input id="disablecomments" type="checkbox" name="disablecomments" value="nocomments"> Disable comments <br />
+      <textarea name="blogpost_input" id="blogpost_input"></textarea> 
       <input id="blog_submit" type="submit" value="ENTER" onclick= "submitblog(); return false;">
-      <div onclick= "testcheckbox() "> TEST ME </div>
     </form>
- </div>
+  </div>
 
-<div class="footer">
-  <h2>Footer</h2>
-  <p> contact and stuff</p>
-</div>
-<script>
-  
-  
-                // Replace the <textarea id="editor1"> with a CKEditor
-                // instance, using default configuration.
-                CKEDITOR.replace( 'editor1' );
-
-
-</script>
-<script src="script.js"></script>
-
+  <div class="footer">
+    <h2>Footer</h2>
+    <p> contact and stuff</p>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>

@@ -1,11 +1,12 @@
 <?php
-	
+
+//add new comment to database
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     $dsn = 'mysql:dbname=blogv2;host=127.0.0.1';
-		$user_name = 'root';
-		$pass_word = '';
-		$db='blogv2';
+	$user_name = 'root';
+	$pass_word = '';
+	$db='blogv2';
 
 	$msg =  $_POST["message"];
 	$date = date(" d.M.Y: ");
@@ -16,33 +17,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$connection = new PDO($dsn, $user_name, $pass_word);
 	$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	try {
-		$sql = "INSERT INTO comments (comment, article_id)" .
+		$sql = "INSERT INTO comments (comment, article_id)" . 
 		 "VALUES (:fullmessage,:int_sectionid)";
-		
-			$statement = $connection->prepare($sql);
-			$statement->bindParam(":fullmessage", $fullmessage);
-			$statement->bindParam(":int_sectionid", $int_sectionid);
-			
-			$statement->execute();
-		
-			
+		$statement = $connection->prepare($sql);
+		$statement->bindParam(":fullmessage", $fullmessage);
+		$statement->bindParam(":int_sectionid", $int_sectionid);
+		$statement->execute();
 		echo $fullmessage;
-		
-		}
+	}
 
-		catch(PDOException $e) {
+	catch(PDOException $e) {
 		 echo $sql . "<br>" . $e->getMessage();
-		}
+	}
 
-		$connection = null; // Close connection
+	$connection = null; // Close connection
 
-		if(isset($_SERVER['HTTP_REFERER'])) {
+	if(isset($_SERVER['HTTP_REFERER'])) {
 		    $previous = $_SERVER['HTTP_REFERER'];
-		}
+	}
 		
-
-} elseif ($_SERVER['REQUEST_METHOD'] == 'GET') { //does stuff if the request method is get
+//load comments from database
+} elseif ($_SERVER['REQUEST_METHOD'] == 'GET') { 
 	if(isset($_GET["action"]) && $_GET['action'] == "read") {
+		
 		$dsn = 'mysql:dbname=blogv2;host=127.0.0.1';
 		$user_name = 'root';
 		$pass_word = '';
@@ -54,22 +51,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		
 		try {
-		$sql = 'SELECT * FROM comments WHERE article_id ="'.$int_sectionid.'"'; 
-		$statement = $connection->query($sql); 
-		$commentresult = $statement->fetchall(\PDO::FETCH_ASSOC);
-		
-		
-
-		
-		$commentJSON = json_encode($commentresult);
-
-		//var_dump($resultJSON) ;
-		//echo $commentJSON;
-		echo $commentJSON;
-
-
+			$sql = 'SELECT * FROM comments WHERE article_id ="'.$int_sectionid.'"ORDER BY comment_id DESC'; 
+			$statement = $connection->query($sql); 
+			$commentresult = $statement->fetchall(\PDO::FETCH_ASSOC);
+			$commentJSON = json_encode($commentresult);
+			echo $commentJSON;
 		}
-
 
 		catch(PDOException $e) {
 		 echo $sql . "<br>" . $e->getMessage();
@@ -80,45 +67,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		    $previous = $_SERVER['HTTP_REFERER'];
 		}
 
-	} elseif(isset($_GET["action"]) && $_GET['action'] == "read") {
-		$dsn = 'mysql:dbname=blogv2;host=127.0.0.1';
-		$user_name = 'root';
-		$pass_word = '';
-		$db='blogv2';
-
-		$id =  $_GET['id']; 
-		$mykey= $_GET['mykey'];
-		$connection = new PDO($dsn, $user_name, $pass_word);
-		$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-		try {		
-		$getmsg = 'SELECT message FROM chat WHERE id ="'.$id.'" AND mykey ="'.$mykey.'"'; 
-		$getusr = 'SELECT username FROM chat WHERE id ="'.$id.'" AND mykey ="'.$mykey.'"';
-		$statement1 = $connection->query($getmsg); 
-		$statement2 = $connection->query($getusr); 
-		$result1 = $statement1->fetchcolumn();
-		$result2 = $statement2->fetchcolumn();	
-		$fullmessage = $result2." : ".$result1;	
-		echo $fullmessage;
-		}
-
-		catch(PDOException $e) {
-		echo $sql . "<br>" . $e->getMessage();
-		}
-
-		$connection = null; // Close connection
-
-		if(isset($_SERVER['HTTP_REFERER'])) {
-		    $previous = $_SERVER['HTTP_REFERER'];
-		}
-
-
 	} else {
 		echo "GET REQUEST FAILED AGAIN";
-	
 	};
-
-   
 };
 ?>
 

@@ -21,12 +21,61 @@ h3{
     text-decoration: underline;
 }
 
+.commentsection{
+    display: block;
+    margin-top: 5px;
+    text-align: center;
+    width: 90%;
 
-#blogpage{
-
-    
 }
 
+.see_comments{
+    display: block;
+     margin: auto;
+    background-color: #333;
+    width: 30%;
+    padding: 2px;
+    color: #FBFBFB;
+      font-weight: bold;
+      
+
+}
+.commentlist{
+    display: block;
+    margin: auto;
+width: 100%;
+
+ 
+}
+.comment{
+    
+   font-size: 15px;
+   font-weight: bold;
+    background-color: #FBFBFB;
+   
+    height: 50px;
+    margin-bottom: 5px;
+    padding: 1px;
+
+}
+.comment_input{
+    display: block;
+    margin: auto;
+    margin-bottom: 5px;
+    width: 70%;
+}
+
+.send_comment{
+    display: block;
+     margin: auto;
+    background-color: #333;
+    width: 30%;
+    padding: 2px;
+    color: #FBFBFB;
+    font-weight: bold;
+    text-align: center;
+
+}
 
 /* submit.hmtl specific*/
 #new_category{

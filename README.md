@@ -3,7 +3,12 @@ A blog+database, for the third CodeGorilla assignment. Live version: http://wijz
 
 # Version 1.7 (07.02.2018)
 
-version 1.7: added a password protected section (.htaccess) for the blogger/admin, with the option to post articles, and remove comments. These functions are no longer available for regular visitors. .htpasswds file is located in the "verywellhidden" folder. Preset usernames and passwords are "blogger";"blogger" and "admin";"admin". Blogger can also choose to disable comments via the submit form [w3-006; w4-002; w4-002]
+version 1.7: 
+
+- added a password protected section (.htaccess) for the blogger/admin, with the option to post articles, and remove comments. These functions are no longer available for regular visitors. .htpasswds file is located in the "verywellhidden" folder. Preset usernames and passwords are "blogger";"blogger" and "admin";"admin". [w4-004]
+- Blogger can also choose to disable comments via the submit form [w3-005]
+
+- removed text editor froms ubmit from to include text expander [w4-001]
 
 version 1.6: added commentsection, the option to delete individual comments, and multiple comments per blogpost [w3-006; w4-002; w4-002; W4-005].
 
@@ -59,22 +64,18 @@ W4-005 | Blogger| to be able to decide whether my article will have a commentsec
 - W3-004
 - W3-006
 - W3-005
-- W3-007
-- W3-008
 
 
+- W4-001
 - W4-002
 - W4-003
 - W4-004
 - W4-005
 
 ## to do:
-
-- W4-001
-
+- W3-007
+- W3-008
+- combine texteditor and text expander script
 - combine some of the php files
 - clean up code
 - css
-
-
-

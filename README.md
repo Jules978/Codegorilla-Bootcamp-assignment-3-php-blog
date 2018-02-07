@@ -1,7 +1,9 @@
 # blog
 A blog+database, for the third CodeGorilla assignment. Live version: http://wijzijncodegorilla.nl/julia/blog/
 
-# Version 1.6 (06.02.2018)
+# Version 1.7 (07.02.2018)
+
+version 1.7: added a password protected section (.htaccess) for the blogger/admin, with the option to post articles, and remove comments. These functions are no longer available for regular visitors. .htpasswds file is located in the "verywellhidden" folder. Preset usernames and passwords are "blogger";"blogger" and "admin";"admin". 
 
 version 1.6: added commentsection, the option to delete individual comments, and multiple comments per blogpost [w3-006; w4-002; w4-002].
 
@@ -64,11 +66,12 @@ W4-005 | Blogger| to be able to decide whether my article will have a commentsec
 - W4-002
 - W4-003
 - W4-004
+- W4-005
 
 ## to do:
 
 - W4-001
-- W4-005
+
 - combine some of the php files
 - clean up code
 - css

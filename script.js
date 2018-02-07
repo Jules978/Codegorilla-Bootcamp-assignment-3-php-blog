@@ -5,37 +5,6 @@ var xhr = new XMLHttpRequest();
 // send blogpost data to database:
 
 
-function submitblog(){  //submits new blog post to submit.php
-	var blog_title =  document.getElementById('title_input').value;  
-	
-var blog_text = CKEDITOR.instances.editor1.getData();
-	 
-var blog_categories = $("#categories_input").val() || [];
-
- var formData = new FormData();
-
- formData.append("blogtitle", blog_title);
-formData.append("blogcategories",blog_categories); // number 123456 is immediately converted to a string "123456"
-formData.append("blogtext", blog_text);
-// HTML file input, chosen by user
-
-
-// JavaScript file-like object
-
-
-xhr.open("POST","submit.php", true); 
-xhr.send(formData);  
-
-	
-  	
-  document.getElementById("postblog").style.display = "none";
-  document.getElementById("postmessage").style.display = "block"; 
-
-};
-
-
-//gets all blogposts from database
-
 function getallposts(){ 
 	document.getElementById("blog_row").innerHTML = ""; //clears div containing blogposts
 	
@@ -87,7 +56,7 @@ function getallposts(){
     document.getElementById("blog_row").appendChild(blogcard);
 
     //create comment section
-
+    if(blogs_array[post].disable_comments == "false"){
     var commentfield_id= "comments"+blogs_array[post].a_id;
     var comment_section_id= "commentsection"+blogs_array[post].a_id;
     var comment_input_id= "commentinput"+blogs_array[post].a_id;
@@ -127,7 +96,7 @@ comments.appendChild(commentlist);
 commentsection.appendChild(comments);
 commentsection.appendChild(commentinput);
 blogcard.appendChild(commentsection);
-
+}
 		}
     }
 };
@@ -186,7 +155,7 @@ function getfiveposts(){
 
     //create comment section
 
-
+if(blogs_array[post].disable_comments == "false"){
     var commentfield_id= "comments"+blogs_array[post].a_id;
     var comment_section_id= "commentsection"+blogs_array[post].a_id;
     var comment_input_id= "commentinput"+blogs_array[post].a_id;
@@ -228,7 +197,7 @@ commentsection.appendChild(comments);
 commentsection.appendChild(commentinput);
 blogcard.appendChild(commentsection);
 
-
+}
 		}
     }
 };
@@ -287,7 +256,7 @@ function sortbycategory(category){
     blogcard.appendChild(blogcard_content);
     document.getElementById("blog_row").appendChild(blogcard);
     //create comment section
-
+if(blogs_array[post].disable_comments == "false"){
     var commentfield_id= "comments"+blogs_array[post].a_id;
     var comment_section_id= "commentsection"+blogs_array[post].a_id;
     var comment_input_id= "commentinput"+blogs_array[post].a_id;
@@ -328,7 +297,7 @@ comments.appendChild(commentlist);
 commentsection.appendChild(comments);
 commentsection.appendChild(commentinput);
 blogcard.appendChild(commentsection);
-
+}
 		}
     } 
 };
@@ -393,70 +362,6 @@ function loadcategories(){
 
 };
 
-function loadsubmitcategories(){
-
-	
-	var surl = "getmessages.php?action=cat"; 
-	xhr.open('GET', surl, false);
- 	
-	xhr.send();
-	var category_array = JSON.parse(xhr.response);
-	//console.log(category_array);
-	for (var cat in category_array) {
-       if (category_array.hasOwnProperty(cat)) {  
-       	var category_name = category_array[cat].name;
-       	var category_id = category_array[cat].c_id;
-
-       	
-
-		var category_option = document.createElement("option"); 
-			category_option.value = category_id;
-			var category_text = document.createTextNode(category_name);
-			
-			category_option.appendChild(category_text);
-		var category_select = document.getElementById("categories_input");  
-			category_select.appendChild(category_option);
-			
-
-       	/* <select id="categories_input" = name="categories_input" size="4"> 
-          <option value="news">News</option> */
-
-
-       }
-       }
-
-};
-
-function showsubmitnewcategory(){
-
-document.getElementById("postblog").style.display = "none";
-document.getElementById("postmessage").style.display = "none"; 
-document.getElementById("new_category").style.display = "block"; 
-
-
-
-
-}
-
-function submitcategory(){
- var new_category =  document.getElementById('newcategory_input').value;  
-
-	
-	 var url= "newcategory="+ new_category ;  
-	xhr.open("POST","newcategory.php", true); //POST request
-	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
-  	xhr.send(url); 
-  	
-  	
-    document.getElementById("new_category").style.display = "none";
-    document.getElementById("postnew_category").style.display = "block";
-    var added_message = new_category + " has been added to the database";
-     
-    var added_message_textnode = document.createTextNode(added_message);
-      document.getElementById("postnew_category").appendChild(added_message_textnode);
-      //adds textnodes to corresponding elements
-     
-};
 
 
 function submitcomment(sectionid){
@@ -498,7 +403,7 @@ var url= "comments.php?action=read&sectionid="+ int_sectionid;
    var commentlist = document.getElementById("commentlist_"+articleid);
    var comment_item = document.createElement("li"); 
    comment_item.id = "comment_"+commentid;
-   comment_item.onclick = function(){deletecomment(this.id)};
+   
    comment_item.innerHTML = commenttext;
 
    commentlist.appendChild(comment_item);
@@ -506,25 +411,6 @@ var url= "comments.php?action=read&sectionid="+ int_sectionid;
   }
 }
 
-function deletecomment(id){
-
-   var commentid_string=id;
-
-    var commentid = commentid_string.substring(8, );
-
-    if (confirm("Delete this comment?")) {
-      var url= "commentid="+ commentid;
-      xhr.open("POST","delete.php", true); //POST request
-      xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
-      xhr.send(url); 
-      console.log(xhr.response);
-
-    } else {
-        txt = "Comment stays!";
-    }
-
-
-}
 
 
   

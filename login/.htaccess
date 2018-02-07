@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Blogger Area"
+AuthUserFile /xampp/htdocs/blog4.8/verywellhidden/.htpasswd
+require valid-user

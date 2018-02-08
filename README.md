@@ -7,7 +7,7 @@ version 1.8:
 
 - added the option to disable commentsection after posting [w3-005]
 
-- added a text editor (summernote: https://summernote.org/) with autofinish options [W3-007;- W3-008; w4-001 maybe]
+- added a text editor (summernote: https://summernote.org/) with autofinish options [W3-007;- W3-008; w4-001 maybe]. *discussed with coach (Floris) whether autofinish function is a good altenative to the text expander. He agreed it's good enough.*
 
 - edited css
 version 1.7: 
@@ -69,9 +69,10 @@ W4-005 | Blogger| to be able to decide whether my article will have a commentsec
 - W3-002
 - W3-003
 - W3-004
-- W3-006
 - W3-005
-
+- W3-006
+- W3-007
+- W3-008
 
 - W4-001
 - W4-002
@@ -80,9 +81,8 @@ W4-005 | Blogger| to be able to decide whether my article will have a commentsec
 - W4-005
 
 ## to do:
-- W3-007
-- W3-008
-- combine texteditor and text expander script
+
+- Let blogger manually add words to autofinish function.
 - combine some of the php files
 - clean up code
 - css

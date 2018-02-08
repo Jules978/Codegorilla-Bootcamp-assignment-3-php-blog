@@ -6,7 +6,7 @@ A blog+database, for the third CodeGorilla assignment. Live version: http://wijz
 version 1.8:
 
 - added to option to manually add words to the autofinish list (via database) [W3-007;- W3-008; w4-001]
-- added a text editor (summernote: https://summernote.org/) with autofinish options [W3-007;- W3-008; w4-001 maybe]. *discussed with coach (Floris) whether autofinish function is a good altenative to the text expander. He agreed it's good enough.*
+- added a text editor (summernote: https://summernote.org/) with autofinish options [W3-007;- W3-008; w4-001 maybe]. *discussed with coach (Floris) whether autofinish function is a good altenative to the text expander. He agreed it's a good comprimise, if the blogger can add words to the autofinish list themselves.*
 - added the option to disable commentsection after posting [w3-005]
 - edited css
 

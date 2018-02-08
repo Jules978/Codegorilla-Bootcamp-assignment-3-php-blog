@@ -3,6 +3,13 @@ A blog+database, for the third CodeGorilla assignment. Live version: http://wijz
 
 # Version 1.7 (07.02.2018)
 
+version 1.8:
+
+- added the option to disable commentsection after posting [w3-005]
+
+- added a text editor (summernote: https://summernote.org/) with autofinish options [W3-007;- W3-008; w4-001 maybe]
+
+- edited css
 version 1.7: 
 
 - added a password protected section (.htaccess) for the blogger/admin, with the option to post articles, and remove comments. These functions are no longer available for regular visitors. .htpasswds file is located in the "verywellhidden" folder. Preset usernames and passwords are "blogger";"blogger" and "admin";"admin". [w4-004]

@@ -21,6 +21,35 @@ h3{
     text-decoration: underline;
 }
 
+
+#new_autofinish{
+
+    margin: auto;
+    text-align:center;
+    background-color: #FBFBFB;
+    margin-top: 10px;
+    width: 90%;
+    padding: 5px;
+    display: none;
+}
+
+#word_input{
+    margin: auto;
+    height: 30px;
+    width: 30%;
+    margin-top: 5px;
+
+
+}
+#word_submit{
+    margin: auto;
+    margin-top: 5px;
+    padding: 1px;
+    width: 30%;
+    
+    background-color: #F2A073;
+}
+
 .commentsection{
    margin: auto;
     margin-top: 5px;

@@ -12,7 +12,7 @@
   <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>
 
 </head> 
-<body onload=" loadsubmitcategories()" style="background: #96B1BD">
+<body onload=" loadsubmitcategories(); getwordarray()" style="background: #96B1BD">
 
   <div id="header">
     <h2>THIS IS A BLOG</h2>
@@ -21,7 +21,7 @@
   <ul id= "topbar">
     <li><a href="index.html">Home</a></li>
     <li><a href="#newcategory" onclick= "showsubmitnewcategory()" >Add category</a></li>
-    </li>
+    <li><a href="#newautofinish" onclick= "showsubmitnewautofinish()" >Add autofinish word</a></li>
     <li style="float:right"><a id="newpostlink" href="submit.html">Add new post</a></li>
   </ul>
 
@@ -34,6 +34,14 @@
     <div id="submit_newcategory" onclick= "submitcategory()">Send</div>
   </div>
 
+  <div id="new_autofinish">
+      add word to autofinish:<br />     
+      <input id="word_input" type="text" placeholder="autofinish word" name="word_input" ><br />
+      <div id="word_submit" onclick= "addautofinishword()">Send</div>
+</div>
+     
+    
+
   <div id="postblog">
     <form id="submit_chat" onsubmit="submitblog(); return false;">
       Title:<br />     
@@ -42,27 +50,11 @@
       <select multiple id="categories_input" = name="categories_input" size="4" ></select><br />
       <input id="disablecomments" type="checkbox" name="disablecomments" value="nocomments"> Disable comments <br />
       <div id="summernote"><p></p></div>
-  <script>
-    $(document).ready(function() {
-        $('#summernote').summernote({
-  height: 100,
-  
-  placeholder: '',
-  hint: {
-    words: ['CodeGorilla', 'Groningen', 'database', 'Big Building'],
-    match: /\b(\w{1,})$/,
-    search: function (keyword, callback) {
-      callback($.grep(this.words, function (item) {
-        return item.indexOf(keyword) === 0;
-      }));
-    }
-  }
-});
-    });
-
-  </script>
-      <input id="blog_submit" type="submit" value="ENTER" onclick= "submitblog(); return false;">
+       <input id="blog_submit" type="submit" value="ENTER" onclick= "submitblog(); return false;">
     </form>
+     
+
+
   </div>
 
   <div class="footer">

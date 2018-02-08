@@ -1,14 +1,9 @@
 //global variables
 var xhr = new XMLHttpRequest();
+//var wordarray= ['CodeGorilla', 'Groningen', 'database', 'Big Building'];
 
-/*shortcuts = { //used in textexpand function
-     "cci" : "customer called in",
-    "rfc" : "request for comments",
-    "www" : "world wide web",
-     "gn" : "Groningen",
-    "cg" : "Code Gorilla",
-    "php" : "help me"
-}; */
+var wordarray = [];
+
 
 //gets all articles from database
 function getallposts(){ 
@@ -443,9 +438,11 @@ function submitblog(){
 
 //show category submit form
 function showsubmitnewcategory(){
+  document.getElementById("new_autofinish").style.display = "none"; 
   document.getElementById("postblog").style.display = "none";
   document.getElementById("postmessage").style.display = "none"; 
   document.getElementById("new_category").style.display = "block"; 
+
 }
 
 // submit new category
@@ -521,6 +518,61 @@ function deletecomment(id){
     } else {
       txt = "Comment stays!";
     }
+}
+
+function showsubmitnewautofinish(){
+
+  document.getElementById("postblog").style.display = "none";
+  document.getElementById("postmessage").style.display = "none"; 
+  document.getElementById("new_category").style.display = "none"; 
+  document.getElementById("new_autofinish").style.display = "block"; 
+}
+
+
+
+function getwordarray(){
+
+var surl = "autofinish.php"; 
+  xhr.open('GET', surl, false);
+  xhr.send();
+  var wordarrays = JSON.parse(xhr.response);
+  
+  for (var worditem in wordarrays) {
+      var finishword = wordarrays[worditem].word;
+      wordarray.push(finishword);
+    }
+$(document).ready(function() {
+        $('#summernote').summernote({
+  height: 100,
+  
+  placeholder: '',
+  hint: {
+    words: wordarray,
+    match: /\b(\w{1,})$/,
+    search: function (keyword, callback) {
+      callback($.grep(this.words, function (item) {
+        return item.indexOf(keyword) === 0;
+
+      }));
+    }
+  }
+});
+    });
+}    
+
+function addautofinishword(){
+  
+  var new_word =  document.getElementById('word_input').value;
+    
+  var url= "word="+ new_word ;  
+  xhr.open("POST","autofinish.php", true); //POST request
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
+  xhr.send(url); 
+    document.getElementById('word_input').value="";
+  
+
+
+
 }
 
 

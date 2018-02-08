@@ -1,14 +1,14 @@
 //global variables
 var xhr = new XMLHttpRequest();
 
-shortcuts = { //used in textexpand function
+/*shortcuts = { //used in textexpand function
      "cci" : "customer called in",
     "rfc" : "request for comments",
     "www" : "world wide web",
      "gn" : "Groningen",
     "cg" : "Code Gorilla",
     "php" : "help me"
-};
+}; */
 
 //gets all articles from database
 function getallposts(){ 
@@ -73,7 +73,8 @@ function getallposts(){
 
           var commentsection = document.createElement("div");
               commentsection.className = "commentsection";
-              commentsection.id= blogcard.id;
+              commentsection.id= "commentsection_"+ blogcard.id;
+
     
           var comments = document.createElement("div");
               comments.id = commentfield_id;
@@ -83,6 +84,7 @@ function getallposts(){
           
           //create comment form and see/send options
           var commentinput = document.createElement("div");
+              
           var commenttext = document.createElement("input");
               commenttext.id = comment_input_id;
               commenttext.className = "comment_input";
@@ -98,14 +100,20 @@ function getallposts(){
               seecomments.className =  "see_comments";
               seecomments.innerHTML="Show comments";
               seecomments.onclick =  function() { getcomments(this.id) };
-      
+          var removecommentsection = document.createElement("div");
+              removecommentsection.id = blogcard.id;
+              removecommentsection.className = "remove_commentsection";
+              removecommentsection.onclick =  function() { disablecomments(this.id) };
+              removecommentsection.innerHTML="Remove commentsection";
+
           //add comment elements to  blogcard
-          commentinput.appendChild(seecomments);
+          commentsection.appendChild(seecomments);
           commentinput.appendChild(commenttext);
           commentinput.appendChild(commentsubmit);
           comments.appendChild(commentlist);
           commentsection.appendChild(comments);
           commentsection.appendChild(commentinput);
+          commentsection.appendChild(removecommentsection);
           blogcard.appendChild(commentsection);
         }
 		  }
@@ -169,7 +177,7 @@ function getfiveposts(){
             
             var commentsection = document.createElement("div");
                 commentsection.className = "commentsection";
-                commentsection.id= blogcard.id;
+                commentsection.id= "commentsection_"+ blogcard.id;
             
             var comments = document.createElement("div");
                 comments.id = commentfield_id;
@@ -194,15 +202,21 @@ function getfiveposts(){
                 seecomments.className = "see_comments";
                 seecomments.innerHTML="Show comments";
                 seecomments.onclick =  function() { getcomments(this.id) };
+            var removecommentsection = document.createElement("div");
+                removecommentsection.id = blogcard.id;
+                removecommentsection.className = "remove_commentsection";
+                removecommentsection.onclick =  function() { disablecomments(this.id) };
+                removecommentsection.innerHTML="Remove commentsection";   
               
             //add comment elements to  blogcard
-            commentinput.appendChild(seecomments);
+            commentsection.appendChild(seecomments);
             commentinput.appendChild(commenttext);
             commentinput.appendChild(commentsubmit);
             comments.appendChild(seecomments);
             comments.appendChild(commentlist);
             commentsection.appendChild(comments);
             commentsection.appendChild(commentinput);
+             commentsection.appendChild(removecommentsection);
             blogcard.appendChild(commentsection);
         }
 		  }
@@ -266,7 +280,7 @@ function sortbycategory(category){
 
             var commentsection = document.createElement("div");
                 commentsection.className = "commentsection";
-                commentsection.id= blogcard.id;
+                commentsection.id= "commentsection_"+ blogcard.id;
             var comments = document.createElement("div");
                 comments.id = commentfield_id;
             var commentlist=document.createElement("ul");
@@ -290,20 +304,40 @@ function sortbycategory(category){
                 seecomments.className = "see_comments";
                 seecomments.innerHTML="Show comments";
                 seecomments.onclick =  function() { getcomments(this.id) };
-              
+            var removecommentsection = document.createElement("div");
+                removecommentsection.id = blogcard.id;
+                removecommentsection.className = "remove_commentsection";
+                removecommentsection.onclick =  function() { disablecomments(this.id) };
+                removecommentsection.innerHTML="Remove commentsection";   
+
             //add comment elements to  blogcard
-            commentinput.appendChild(seecomments);
+            commentsection.appendChild(seecomments);
             commentinput.appendChild(commenttext);
             commentinput.appendChild(commentsubmit);
             comments.appendChild(commentlist);
             commentsection.appendChild(comments);
             commentsection.appendChild(commentinput);
+            commentsection.appendChild(removecommentsection);
             blogcard.appendChild(commentsection);
         }
 		  }
   } 
 };
 
+
+function disablecomments(id){
+  var articleid= id;
+  console.log(id);
+  if (confirm("Remove comment section?")) {
+      var url= "action=block&articleid="+ articleid;
+      xhr.open("POST","delete.php", true); //POST request
+      xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
+      xhr.send(url); 
+      console.log(xhr.response);
+      
+    } 
+
+}
 //load nav bar and side bar categories
 function loadcategories(){
   var surl = "getmessages.php?action=cat"; 
@@ -372,10 +406,10 @@ function loadsubmitcategories(){
 //sending articles to database:
 function submitblog(){  
   var blog_title = document.getElementById('title_input').value;  
-  var blog_text = document.getElementById('blogpost_input').value;  
+  var blog_text = $('#summernote').summernote('code');
   var blog_categories = $("#categories_input").val() || [];
   var disable_comments = document.getElementById('disablecomments').checked;  
-  
+  console.log(blog_text);
   var formData = new FormData();
 
   formData.append("blogtitle", blog_title);
@@ -391,7 +425,7 @@ function submitblog(){
 };
 
 //text expander for blogposts
-function textexpand() {
+/*function textexpand() {
     
   var ta = document.getElementById("blogpost_input");
   var timer = 0;
@@ -405,7 +439,7 @@ function textexpand() {
                   clearTimeout(timer);
                   timer = setTimeout(update, 200);
                   }
-}
+} */
 
 //show category submit form
 function showsubmitnewcategory(){
@@ -468,7 +502,7 @@ function getcomments(sectionid){
     var comment_item = document.createElement("li"); 
         comment_item.id = "comment_"+commentid;
         comment_item.className = "comment";
-        comment_item.onclick = function(){deletecomment(this.id)};
+        comment_item.ondblclick = function(){deletecomment(this.id)};
         comment_item.innerHTML = commenttext;
         commentlist.appendChild(comment_item);
   }
@@ -479,7 +513,7 @@ function deletecomment(id){
   var commentid_string=id;
   var commentid = commentid_string.substring(8, );
     if (confirm("Delete this comment?")) {
-      var url= "commentid="+ commentid;
+      var url= "action=remove&commentid="+ commentid;
       xhr.open("POST","delete.php", true); //POST request
       xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
       xhr.send(url); 

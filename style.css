@@ -22,60 +22,72 @@ h3{
 }
 
 .commentsection{
-    display: block;
+   margin: auto;
     margin-top: 5px;
     text-align: center;
-    width: 90%;
+  width: 98%;
+  background-color: #f2b593;
+    
 
 }
 
 .see_comments{
-    display: block;
-     margin: auto;
-    background-color: #333;
-    width: 30%;
-    padding: 2px;
-    color: #FBFBFB;
-      font-weight: bold;
+   
+    margin: auto;
+    margin-bottom: 5px;
+    color: #333;
+    width: 100%;
+    padding: 5px;
+    font-weight: bold;
       
 
 }
 .commentlist{
     display: block;
     margin: auto;
-width: 100%;
+   width: 95%;
 
  
 }
 .comment{
-    
+    overflow-y: auto;
+margin: auto;
    font-size: 15px;
    font-weight: bold;
     background-color: #FBFBFB;
-   
+   width: 100%;
     height: 50px;
     margin-bottom: 5px;
     padding: 1px;
 
 }
 .comment_input{
-    display: block;
+    
     margin: auto;
     margin-bottom: 5px;
     width: 70%;
 }
 
 .send_comment{
-    display: block;
+    
      margin: auto;
     background-color: #333;
     width: 30%;
-    padding: 2px;
+    padding: 5px;
     color: #FBFBFB;
     font-weight: bold;
     text-align: center;
 
 }
+
+.remove_commentsection{
+    margin: auto;
+    margin-top: 5px;
+    width:100%;
+    font-weight: bold;
+    color: red;
+}
+
 /* submit.hmtl specific*/
 #new_category{
     margin: auto;
@@ -308,7 +320,7 @@ text-align:center;
     height: 10%;
     margin-top: 5px;
     padding: 2px;
-    font-size: 17px;
+    font-size: 1em;
     font-weight: bold;
 }
 

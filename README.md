@@ -1,15 +1,15 @@
 # blog
 A blog+database, for the third CodeGorilla assignment. Live version: http://wijzijncodegorilla.nl/julia/blog/
 
-# Version 1.7 (07.02.2018)
+# Version 1.8 (08.02.2018)
 
 version 1.8:
 
-- added the option to disable commentsection after posting [w3-005]
-
+- added to option to manually add words to the autofinish list (via database) [W3-007;- W3-008; w4-001]
 - added a text editor (summernote: https://summernote.org/) with autofinish options [W3-007;- W3-008; w4-001 maybe]. *discussed with coach (Floris) whether autofinish function is a good altenative to the text expander. He agreed it's good enough.*
-
+- added the option to disable commentsection after posting [w3-005]
 - edited css
+
 version 1.7: 
 
 - added a password protected section (.htaccess) for the blogger/admin, with the option to post articles, and remove comments. These functions are no longer available for regular visitors. .htpasswds file is located in the "verywellhidden" folder. Preset usernames and passwords are "blogger";"blogger" and "admin";"admin". [w4-004]
@@ -80,9 +80,10 @@ W4-005 | Blogger| to be able to decide whether my article will have a commentsec
 - W4-004
 - W4-005
 
+- Let blogger manually add words to autofinish function.
+
 ## to do:
 
-- Let blogger manually add words to autofinish function.
 - combine some of the php files
 - clean up code
 - css

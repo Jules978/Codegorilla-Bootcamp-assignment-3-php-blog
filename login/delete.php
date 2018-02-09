@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$connection = new PDO($dsn, $user_name, $pass_word);
 		$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		try {
-			$sql = 'UPDATE articles SET disable_comments = "true" WHERE a_id="'.$int_articleid.'"'; 
+			$sql = 'UPDATE articles SET disable_comments = "true" WHERE a_id="'.$int_articleid.'"; DELETE FROM comments WHERE article_id="'.$int_articleid.'" '; 
 
 			$statement = $connection->query($sql); 
 			echo $int_articleid." commentsection removed";

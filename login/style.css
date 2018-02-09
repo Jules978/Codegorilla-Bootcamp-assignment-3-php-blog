@@ -21,6 +21,12 @@ h3{
     text-decoration: underline;
 }
 
+h4{
+
+    font-size: 20px;
+    text-decoration: underline;
+}
+
 
 #new_autofinish{
 
@@ -31,6 +37,30 @@ h3{
     width: 90%;
     padding: 5px;
     display: none;
+    align-content: stretch;
+}
+
+#autofinishleft {
+    margin-top: 2%;
+    
+    width: 65%;
+    margin-right: 1%;
+
+}
+#autofinishright {
+  
+    width: 34%;
+    border-left: 6px solid #f2b593;
+    padding: 5px;
+    
+    text-align: left;
+    
+}
+
+#wordlist{
+    overflow-y: scroll;
+    padding: 5px;
+    max-height: 300px;
 }
 
 #word_input{
@@ -421,7 +451,10 @@ overflow: auto;
     text-align: left;
 }
 
-
+.remove_commentsection{
+margin: auto;
+padding: 5px;
+}
 
 /* Clear floats after the columns */
 .row:after {

@@ -419,22 +419,6 @@ function submitblog(){
   document.getElementById("postmessage").style.display = "block"; 
 };
 
-//text expander for blogposts
-/*function textexpand() {
-    
-  var ta = document.getElementById("blogpost_input");
-  var timer = 0;
-  var re = new RegExp("\\b(" + Object.keys(shortcuts).join("|") + ")\\b", "g");
-  update = function() {
-            ta.value = ta.value.replace(re, function($0, $1) {
-            return shortcuts[$1.toLowerCase()];
-              });
-            }
-  ta.onkeydown = function() {
-                  clearTimeout(timer);
-                  timer = setTimeout(update, 200);
-                  }
-} */
 
 //show category submit form
 function showsubmitnewcategory(){
@@ -525,7 +509,15 @@ function showsubmitnewautofinish(){
   document.getElementById("postblog").style.display = "none";
   document.getElementById("postmessage").style.display = "none"; 
   document.getElementById("new_category").style.display = "none"; 
-  document.getElementById("new_autofinish").style.display = "block"; 
+  document.getElementById("new_autofinish").style.display = "flex"; 
+  var worddisplay = document.getElementById("wordlist");
+  getwordarray();
+  
+  for (i = 0; i < wordarray.length; i++) { 
+    worddisplay.innerHTML +=  wordarray[i] + "<br>";
+  }
+
+
 }
 
 
@@ -536,7 +528,7 @@ var surl = "autofinish.php";
   xhr.open('GET', surl, false);
   xhr.send();
   var wordarrays = JSON.parse(xhr.response);
-  
+  wordarray.splice(0, wordarray.length);
   for (var worditem in wordarrays) {
       var finishword = wordarrays[worditem].word;
       wordarray.push(finishword);
@@ -558,6 +550,7 @@ $(document).ready(function() {
   }
 });
     });
+
 }    
 
 function addautofinishword(){
@@ -565,11 +558,17 @@ function addautofinishword(){
   var new_word =  document.getElementById('word_input').value;
     
   var url= "word="+ new_word ;  
-  xhr.open("POST","autofinish.php", true); //POST request
+  xhr.open("POST","autofinish.php", false); //POST request
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
   xhr.send(url); 
     document.getElementById('word_input').value="";
   
+  var worddisplay = document.getElementById("wordlist");
+  getwordarray();
+  worddisplay.innerHTML = "";
+  for (i = 0; i < wordarray.length; i++) { 
+    worddisplay.innerHTML +=  wordarray[i] + "<br>";
+  }
 
 
 

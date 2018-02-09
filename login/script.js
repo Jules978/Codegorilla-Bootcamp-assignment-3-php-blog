@@ -1,9 +1,6 @@
 //global variables
 var xhr = new XMLHttpRequest();
-//var wordarray= ['CodeGorilla', 'Groningen', 'database', 'Big Building'];
-
-var wordarray = [];
-
+var wordarray = []; //used by autofinish function in the test editor
 
 //gets all articles from database
 function getallposts(){ 
@@ -101,15 +98,15 @@ function getallposts(){
               removecommentsection.onclick =  function() { disablecomments(this.id) };
               removecommentsection.innerHTML="Remove commentsection";
 
-          //add comment elements to  blogcard
-          commentsection.appendChild(seecomments);
-          commentinput.appendChild(commenttext);
-          commentinput.appendChild(commentsubmit);
-          comments.appendChild(commentlist);
-          commentsection.appendChild(comments);
-          commentsection.appendChild(commentinput);
-          commentsection.appendChild(removecommentsection);
-          blogcard.appendChild(commentsection);
+              //add comment elements to  blogcard
+              commentsection.appendChild(seecomments);
+              commentinput.appendChild(commenttext);
+              commentinput.appendChild(commentsubmit);
+              comments.appendChild(commentlist);
+              commentsection.appendChild(comments);
+              commentsection.appendChild(commentinput);
+              commentsection.appendChild(removecommentsection);
+              blogcard.appendChild(commentsection);
         }
 		  }
   }
@@ -305,34 +302,20 @@ function sortbycategory(category){
                 removecommentsection.onclick =  function() { disablecomments(this.id) };
                 removecommentsection.innerHTML="Remove commentsection";   
 
-            //add comment elements to  blogcard
-            commentsection.appendChild(seecomments);
-            commentinput.appendChild(commenttext);
-            commentinput.appendChild(commentsubmit);
-            comments.appendChild(commentlist);
-            commentsection.appendChild(comments);
-            commentsection.appendChild(commentinput);
-            commentsection.appendChild(removecommentsection);
-            blogcard.appendChild(commentsection);
-        }
+                //add comment elements to  blogcard
+                commentsection.appendChild(seecomments);
+                commentinput.appendChild(commenttext);
+                commentinput.appendChild(commentsubmit);
+                comments.appendChild(commentlist);
+                commentsection.appendChild(comments);
+                commentsection.appendChild(commentinput);
+                commentsection.appendChild(removecommentsection);
+                blogcard.appendChild(commentsection);
+            }
 		  }
   } 
 };
 
-
-function disablecomments(id){
-  var articleid= id;
-  console.log(id);
-  if (confirm("Remove comment section?")) {
-      var url= "action=block&articleid="+ articleid;
-      xhr.open("POST","delete.php", true); //POST request
-      xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
-      xhr.send(url); 
-      console.log(xhr.response);
-      
-    } 
-
-}
 //load nav bar and side bar categories
 function loadcategories(){
   var surl = "getmessages.php?action=cat"; 
@@ -374,6 +357,7 @@ function loadcategories(){
        }
     }
 };
+
 
 
 //load categories on submitform
@@ -419,6 +403,33 @@ function submitblog(){
   document.getElementById("postmessage").style.display = "block"; 
 };
 
+//load autofinish array and start editor+autofinish
+function getwordarray(){
+  var surl = "autofinish.php"; 
+  xhr.open('GET', surl, false);
+  xhr.send();
+  var wordarrays = JSON.parse(xhr.response);
+  wordarray.splice(0, wordarray.length);
+  for (var worditem in wordarrays) {
+      var finishword = wordarrays[worditem].word;
+      wordarray.push(finishword);
+    }
+  $(document).ready(function() { //start editor + autofinish 
+        $('#summernote').summernote({
+          height: 100,
+          placeholder: '',
+          hint: {
+            words: wordarray,
+            match: /\b(\w{1,})$/,
+            search: function (keyword, callback) {
+            callback($.grep(this.words, function (item) {
+              return item.indexOf(keyword) === 0;
+              }));
+            }
+          }
+        });
+  });
+}    
 
 //show category submit form
 function showsubmitnewcategory(){
@@ -443,6 +454,39 @@ function submitcategory(){
   var added_message_textnode = document.createTextNode(added_message);
   document.getElementById("postnew_category").appendChild(added_message_textnode);
 };
+
+
+//show autofinish submit form
+function showsubmitnewautofinish(){
+
+  document.getElementById("postblog").style.display = "none";
+  document.getElementById("postmessage").style.display = "none"; 
+  document.getElementById("new_category").style.display = "none"; 
+  document.getElementById("new_autofinish").style.display = "flex"; 
+  var worddisplay = document.getElementById("wordlist");
+  getwordarray(); //call function to display words already in the database
+   for (i = 0; i < wordarray.length; i++) { 
+    worddisplay.innerHTML +=  wordarray[i] + "<br>";
+  }
+}
+
+//add new autofinish words to the database
+function addautofinishword(){
+  var new_word =  document.getElementById('word_input').value;
+  var url= "word="+ new_word ;  
+  xhr.open("POST","autofinish.php", false); //POST request
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
+  xhr.send(url); 
+  
+  document.getElementById('word_input').value="";
+  var worddisplay = document.getElementById("wordlist");
+  getwordarray();
+  worddisplay.innerHTML = "";
+  for (i = 0; i < wordarray.length; i++) { 
+    worddisplay.innerHTML +=  wordarray[i] + "<br>";
+  }
+}
+
 
 //submit new comment 
 function submitcomment(sectionid){
@@ -504,76 +548,18 @@ function deletecomment(id){
     }
 }
 
-function showsubmitnewautofinish(){
-
-  document.getElementById("postblog").style.display = "none";
-  document.getElementById("postmessage").style.display = "none"; 
-  document.getElementById("new_category").style.display = "none"; 
-  document.getElementById("new_autofinish").style.display = "flex"; 
-  var worddisplay = document.getElementById("wordlist");
-  getwordarray();
-  
-  for (i = 0; i < wordarray.length; i++) { 
-    worddisplay.innerHTML +=  wordarray[i] + "<br>";
-  }
-
-
+//disable commentsection
+function disablecomments(id){
+  var articleid= id;
+  console.log(id);
+  if (confirm("Remove comment section?")) {
+      var url= "action=block&articleid="+ articleid;
+      xhr.open("POST","delete.php", true); //POST request
+      xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
+      xhr.send(url); 
+      console.log(xhr.response);
+    } 
 }
 
 
-
-function getwordarray(){
-
-var surl = "autofinish.php"; 
-  xhr.open('GET', surl, false);
-  xhr.send();
-  var wordarrays = JSON.parse(xhr.response);
-  wordarray.splice(0, wordarray.length);
-  for (var worditem in wordarrays) {
-      var finishword = wordarrays[worditem].word;
-      wordarray.push(finishword);
-    }
-$(document).ready(function() {
-        $('#summernote').summernote({
-  height: 100,
-  
-  placeholder: '',
-  hint: {
-    words: wordarray,
-    match: /\b(\w{1,})$/,
-    search: function (keyword, callback) {
-      callback($.grep(this.words, function (item) {
-        return item.indexOf(keyword) === 0;
-
-      }));
-    }
-  }
-});
-    });
-
-}    
-
-function addautofinishword(){
-  
-  var new_word =  document.getElementById('word_input').value;
-    
-  var url= "word="+ new_word ;  
-  xhr.open("POST","autofinish.php", false); //POST request
-  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
-  xhr.send(url); 
-    document.getElementById('word_input').value="";
-  
-  var worddisplay = document.getElementById("wordlist");
-  getwordarray();
-  worddisplay.innerHTML = "";
-  for (i = 0; i < wordarray.length; i++) { 
-    worddisplay.innerHTML +=  wordarray[i] + "<br>";
-  }
-
-
-
-}
-
-
-  
 

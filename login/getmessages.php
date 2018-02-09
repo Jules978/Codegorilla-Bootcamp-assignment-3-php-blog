@@ -17,7 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$blogJSON = json_encode($result);
 			echo $blogJSON;
 		}
-
 		catch(PDOException $e) {
 			echo $sql . "<br>" . $e->getMessage();
 		}

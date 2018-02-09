@@ -2,7 +2,7 @@
 	
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
    
-    //add new comment to database
+    //add new word to database
     $dsn = 'mysql:dbname=blogv2;host=127.0.0.1';
 	$user_name = 'root';
 	$pass_word = '';
@@ -10,7 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	$word =  $_POST["word"];
 	
- 
 	$connection = new PDO($dsn, $user_name, $pass_word);
 	$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	try {
@@ -20,7 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$statement = $connection->prepare($sql);
 		$statement->bindParam(":word", $word);
 		$statement->execute();
-			
 		echo $word;
 		}
 		catch(PDOException $e) {
@@ -40,7 +38,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$pass_word = '';
 		$db='blogv2';
 
-		
 		$connection = new PDO($dsn, $user_name, $pass_word);
 		$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		
@@ -49,9 +46,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$statement = $connection->query($sql); 
 			$wordresult = $statement->fetchall(\PDO::FETCH_ASSOC);
 			$wordJSON = json_encode($wordresult);
-
-		echo $wordJSON;
-}
+			echo $wordJSON;
+		}
 		catch(PDOException $e) {
 		 echo $sql . "<br>" . $e->getMessage();
 		}
@@ -60,8 +56,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		if(isset($_SERVER['HTTP_REFERER'])) {
 		    $previous = $_SERVER['HTTP_REFERER'];
 		}
-
 }	
-
 ?>
 

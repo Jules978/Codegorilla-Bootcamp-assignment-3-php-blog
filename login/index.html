@@ -1,41 +1,32 @@
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="style.css">
-<link rel="shortcut icon" href="pen.ico"/>
 <title>A Blog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="shortcut icon" href="pen.ico"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
-     
+  
 <body onload="getfiveposts(); loadcategories()">
-   
-
 <div id="header">
   <h2>THIS IS A BLOG</h2>
 </div>
-
 <ul id= "topbar">
   <li ><a href="#home" onclick="getfiveposts();">Home</a></li>
   <li><a href="#all" onclick="getallposts();">All posts</a></li>
   <li class="dropdown">
     <a href="javascript:void(0)" class="dropbtn">Categories</a>
-    <div id = "dropdown_category" class="dropdown-content">
-      
-    </div>
+    <div id = "dropdown_category" class="dropdown-content"></div>
   </li>
   <li style="float:right"><a id="newpostlink" href="submit.html">Submit new post</a></li>
 </ul>
-
-
 <div class="row">
-
-  <div id = "blog_row" class="leftcolumn"> </div>
-
+  <div id = "blog_row" class="leftcolumn"></div>
   <div class="rightcolumn"> 
     <div id="card_aboutme">
       <h3>About Me</h3>
-     <img src="cat.jpg" alt="cat" style="width:100%;">
+      <img src="cat.jpg" alt="cat" style="width:100%;">
       <p>Hi there, I am a blog!</p>
     </div>
     <div id="card_categories">
@@ -43,24 +34,20 @@
     </div>
   </div>
 </div>
-
 <div class="footer">
-  
   <p>Posted by: </p>
   <P> Email me at email@email.email</P>
   <div id="images_links">
-<a href="https://github.com/Jules978">
-<img border="0" alt="Github link" src="https://image.flaticon.com/icons/png/512/25/25231.png" width="50" height="50">
-<a href="https://www.linkedin.com">
-<img border="0" alt="Linkedin link" src="https://cdn1.iconfinder.com/data/icons/logotypes/32/square-linkedin-512.png" width="50" height="50">
-<a href="https://www.facebook.com">
-<img border="0" alt="Facebook link" src="https://cdn.worldvectorlogo.com/logos/facebook-icon.svg" width="50" height="50">
-<a href="https://twitter.com">
-<img border="0" alt="Twitter link" src="https://www.seeklogo.net/wp-content/uploads/2015/11/twitter-logo.png" width="50" height="50">
+    <a href="https://github.com/Jules978">
+    <img border="0" alt="Github link" src="https://image.flaticon.com/icons/png/512/25/25231.png" width="50" height="50">
+    <a href="https://www.linkedin.com">
+    <img border="0" alt="Linkedin link" src="https://cdn1.iconfinder.com/data/icons/logotypes/32/square-linkedin-512.png" width="50" height="50">
+    <a href="https://www.facebook.com">
+    <img border="0" alt="Facebook link" src="https://cdn.worldvectorlogo.com/logos/facebook-icon.svg" width="50" height="50">
+    <a href="https://twitter.com">
+    <img border="0" alt="Twitter link" src="https://www.seeklogo.net/wp-content/uploads/2015/11/twitter-logo.png" width="50" height="50">
+  </div>
 </div>
-
-</div>
-
 <script src="script.js"></script>
 </body>
 </html>

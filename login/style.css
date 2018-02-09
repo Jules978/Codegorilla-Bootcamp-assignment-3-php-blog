@@ -10,26 +10,21 @@ body {
 }
 
 h2{
-
     font-size: 30px;
-    
 }
 
 h3{
-
     font-size: 30px;
     text-decoration: underline;
 }
 
 h4{
-
     font-size: 20px;
     text-decoration: underline;
 }
 
-
+/* autofinish menu */
 #new_autofinish{
-
     margin: auto;
     text-align:center;
     background-color: #FBFBFB;
@@ -42,19 +37,15 @@ h4{
 
 #autofinishleft {
     margin-top: 2%;
-    
     width: 65%;
     margin-right: 1%;
-
 }
+
 #autofinishright {
-  
     width: 34%;
     border-left: 6px solid #f2b593;
     padding: 5px;
-    
     text-align: left;
-    
 }
 
 #wordlist{
@@ -68,86 +59,30 @@ h4{
     height: 30px;
     width: 30%;
     margin-top: 5px;
-
-
 }
+
 #word_submit{
     margin: auto;
     margin-top: 5px;
     padding: 1px;
     width: 30%;
-    
     background-color: #F2A073;
 }
 
-.commentsection{
-   margin: auto;
-    margin-top: 5px;
-    text-align: center;
-  width: 98%;
-  background-color: #f2b593;
-    
+/* New category menu*/
 
-}
-
-.see_comments{
-   
+#postnew_category{
+    text-align:center;
+    font-size: 30px;
+    display: none;
     margin: auto;
-    margin-bottom: 5px;
-    color: #333;
-    width: 100%;
+    margin-top: 10px;
     padding: 5px;
-    font-weight: bold;
-      
-
-}
-.commentlist{
-    display: block;
-    margin: auto;
-   width: 95%;
-
- 
-}
-.comment{
-    overflow-y: auto;
-margin: auto;
-   font-size: 15px;
-   font-weight: bold;
+    width: 90%;
+    padding: 5px;
     background-color: #FBFBFB;
-   width: 100%;
-    height: 50px;
-    margin-bottom: 5px;
-    padding: 1px;
-
-}
-.comment_input{
-    
-    margin: auto;
-    margin-bottom: 5px;
-    width: 70%;
 }
 
-.send_comment{
-    
-     margin: auto;
-    background-color: #333;
-    width: 30%;
-    padding: 5px;
-    color: #FBFBFB;
-    font-weight: bold;
-    text-align: center;
-
-}
-
-.remove_commentsection{
-    margin: auto;
-    margin-top: 5px;
-    width:100%;
-    font-weight: bold;
-    color: red;
-}
-
-/* submit.hmtl specific*/
 #new_category{
     margin: auto;
     text-align:center;
@@ -163,17 +98,17 @@ margin: auto;
     height: 30px;
     width: 30%;
     margin-top: 5px;
-
-
 }
+
 #submit_newcategory{
     margin: auto;
     margin-top: 5px;
     padding: 1px;
     width: 30%;
-    
     background-color: #F2A073;
 }
+
+/* New blogpost menu */
 
 #postblog{
     text-align:left;
@@ -183,12 +118,8 @@ margin: auto;
     width: 90%;
     padding: 5px;
     background-color: #FBFBFB;
-
 }
-#title{
 
-
-}
 #title_input{ 
     margin: auto;
     margin-top: 1px;
@@ -202,8 +133,8 @@ margin: auto;
      margin-bottom: 10px;
     margin: auto;
     width: 20%;
-   
 }
+
 #postmessage{
     text-align:center;
     font-size: 30px;
@@ -212,22 +143,6 @@ margin: auto;
     margin-top: 10px;
     padding: 5px;
     width: 90%;
-    
-    padding: 5px;
-    background-color: #FBFBFB;
-
-}
-
-#postnew_category{
-
-text-align:center;
-    font-size: 30px;
-    display: none;
-    margin: auto;
-    margin-top: 10px;
-    padding: 5px;
-    width: 90%;
-    
     padding: 5px;
     background-color: #FBFBFB;
 }
@@ -240,11 +155,9 @@ text-align:center;
     margin-top: 10px;
     margin: auto;
     width: 30%;
-
 }
 
 #postblog textarea{
-
     width: 100%;
     height: 25%;
 }
@@ -257,13 +170,13 @@ text-align:center;
     background: #FBFBFB;
 }
 
-/* Style the top navigation bar */
+/* Nav bar */
 .topnav {
     overflow: hidden;
     background-color: #61646C;
 }
 
-/* Style the topnav links */
+
 .topnav a {
     float: left;
     display: block;
@@ -273,7 +186,7 @@ text-align:center;
     text-decoration: none;
 }
 
-/* Change color on hover */
+
 .topnav a:hover {
     background-color: #F2A073;
     color: black;
@@ -301,7 +214,6 @@ text-align:center;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-
 }
 
 #topbar li a:hover, .dropdown:hover .dropbtn {
@@ -310,8 +222,6 @@ text-align:center;
 
 #topbar li.dropdown {
     display: inline-block;
-
-
 }
 
 #topbar  .dropdown-content {
@@ -329,7 +239,6 @@ text-align:center;
     text-decoration: none;
     display: block;
     text-align: left;
-
 }
 
 #topbar  .dropdown-content a:hover {background-color: #F2A073;}
@@ -351,6 +260,7 @@ text-align:center;
     font-size: 20px;
 }
 
+/* main content, blog rows and sidebar*/
 .row{
 
     margin-top: 20px;
@@ -358,10 +268,8 @@ text-align:center;
 .leftcolumn {   
     float: left;
     width: 75%;
- 
 }
 
-/* Right column */
 .rightcolumn {
     float: left;
     width: 24%;
@@ -370,8 +278,6 @@ text-align:center;
     padding: 5px;
     padding-top:20px;
 }
-
-
 
 .sidebar_category {
     background-color: #F2A073;
@@ -383,35 +289,21 @@ text-align:center;
     font-weight: bold;
 }
 
-
-
-/* Add a card effect for articles */
-
-
 #card_categories {
-    
-     
-     margin-top: 20px;
-}
-#card_aboutme {
-    
-     
-     
+    margin-top: 20px;
 }
 
+/* Blog cards + commentsection*/
 .card_blog {
      background-color: #F2A073;
      text-align:center;
      margin-bottom: 20px;
      padding: 1%;
      overflow: auto;
-     
 }
 
 .card_title{
-   
     text-align: center;
-   
 }
 
 .blog_title_line{
@@ -419,41 +311,90 @@ text-align:center;
     margin-top: 5px;
     background-color: #333;
     color: #FBFBFB;
-   width: 98%;
+    width: 98%;
     height: 40px;
     font-size: 25px;
     padding-top: 5px;
-
-
-
 }
+
 .blog_category_line{
     margin: auto;
-     width: 98%;
-   background-color: #F2A073;
-     color: #333;
+    width: 98%;
+    background-color: #F2A073;
+    color: #333;
     padding: 2px ;
     font-weight: bold;
-
 }
 
 .card_content{ 
     margin: auto;
     text-align: left;
     background-color: #FBFBFB;
- padding: 5px;
- width: 98%;
-overflow: auto;
- 
+    padding: 5px;
+    width: 98%;
+    overflow: auto;
 }
-.commentlist {
+
+.commentsection{
+    margin: auto;
+    margin-top: 5px;
+    text-align: center;
+    width: 98%;
+    background-color: #f2b593;
+}
+
+.see_comments{
+    margin: auto;
+    margin-bottom: 5px;
+    color: #333;
+    width: 100%;
+    padding: 5px;
+    font-weight: bold;
+}
+
+.commentlist{
+    display: block;
+    margin: auto;
+    width: 95%;
     list-style: none;
     text-align: left;
 }
 
+.comment{
+    overflow-y: auto;
+    margin: auto;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #FBFBFB;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 5px;
+    padding: 1px;
+}
+
+.comment_input{
+     margin: auto;
+    margin-bottom: 5px;
+    width: 70%;
+}
+
+.send_comment{
+    margin: auto;
+    background-color: #333;
+    width: 30%;
+    padding: 5px;
+    color: #FBFBFB;
+    font-weight: bold;
+    text-align: center;
+}
+
 .remove_commentsection{
-margin: auto;
-padding: 5px;
+    margin: auto;
+    margin-top: 5px;
+    width:100%;
+    font-weight: bold;
+    color: red;
+    padding: 5px;
 }
 
 /* Clear floats after the columns */
@@ -478,13 +419,14 @@ padding: 5px;
 #images_links {
     margin-top: 5px;
     margin: auto;
-width: 960px;
-height: auto;
-overflow: hidden;
+    width: 960px;
+    height: auto;
+    overflow: hidden;
 }
+
 #images_links a {
-display: inline;
-margin: 0 10px;}
+    display: inline;
+    margin: 0 10px;}
 
 a:link {
     text-decoration: none;

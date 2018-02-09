@@ -36,8 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 		$articleid =  $_POST["articleid"];
 		$int_articleid = (int)$articleid;
-		
-	 
+			 
 		$connection = new PDO($dsn, $user_name, $pass_word);
 		$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		try {
@@ -46,17 +45,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$statement = $connection->query($sql); 
 			echo $int_articleid." commentsection removed";
 		}
-
 		catch(PDOException $e) {
 		 echo $sql . "<br>" . $e->getMessage();
 		}
 
 		$connection = null; // Close connection
 
-		if(isset($_SERVER['HTTP_REFERER'])) {
-		    $previous = $_SERVER['HTTP_REFERER'];
-		}
-
+			if(isset($_SERVER['HTTP_REFERER'])) {
+		    	$previous = $_SERVER['HTTP_REFERER'];
+			}
 }else {
 		echo "GET REQUEST FAILED AGAIN"; 
 	}; 

@@ -1,7 +1,26 @@
 # blog
 A blog+database, for the third CodeGorilla assignment. Live version: http://wijzijncodegorilla.nl/julia/blog/
 
-# Version 1.8 (08.02.2018)
+## using the live version:
+
+- post articles, add categories, and autofinish words in the "Add new post" menu.
+- you can add images and videos to the articles by using the editor.
+- delete comments by double clicking on the offending comment.
+- close and delete commentsections via the red "remove commentsection" option.
+
+## DIY
+
+place all folders/files in your local host folder (htdocs/whatever). You'll also need to import the database (blogv2.sql). 
+The login folder contains a .htaccess file, if you want to use it, change the .htpasswds path. (the username+password combos are blogger+logger and admin+admin).
+
+# Version 2 (09.02.2018)
+
+- improved commentsection removal (now also removes all comments in that commentsecion).
+- autofinish menu now shows a list of all words in the database.
+- altered css, and cleaned up code a bit
+
+# progression: 
+https://trello.com/b/uJAwxdJQ/blog
 
 version 1.8:
 
@@ -32,11 +51,6 @@ version 0.5:
  -Blog site with submit page, blogs are stored in the database, and shown on the homepage (most recent posts first).
 
 version 0.1: base html, and css layout (please excuse the colorscheme). Including a (hidden) submit form.
-
-# progression: 
-https://trello.com/b/uJAwxdJQ/blog
-
-
 
 ### User stories:
 
@@ -84,6 +98,4 @@ W4-005 | Blogger| to be able to decide whether my article will have a commentsec
 
 ## to do:
 
-- combine some of the php files
-- clean up code
-- css
+??

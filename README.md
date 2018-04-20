@@ -1,5 +1,5 @@
 # blog
-A blog+database, for the third CodeGorilla assignment. Live version: http://wijzijncodegorilla.nl/julia/blog/
+A blog+database, for the third CodeGorilla assignment. Live version: http://www.codechamps.nl/julia/blog/
 
 ## using the live version:
 
